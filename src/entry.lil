@@ -1,0 +1,12 @@
+import { allowHtmlFrom } from "./host.lil";
+import { toHast } from "./to-hast.lil";
+
+JsValue install(JsValue self, JsValue options) {
+  bool allow = allowHtmlFrom(self, options);
+  return (JsValue tree, JsValue _file) => {
+    return toHast(tree, allow);
+  };
+}
+
+export JsValue remarkRehype = JS.method1(install);
+export JsValue default = remarkRehype;
