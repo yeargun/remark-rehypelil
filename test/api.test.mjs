@@ -56,7 +56,7 @@ describe("remark-rehype", () => {
     const tags = JSON.stringify(hast)
     assert.match(tags, /math/)
     assert.match(tags, /checkbox/)
-    assert.match(tags, /"p"/)
+    assert.match(tags, /contains-task-list/)
   })
 
   it("keeps pinned keys in the library artifact", () => {

@@ -10,9 +10,9 @@
   "warmupDiscard": 3,
   "comparison": "Official rows are an esbuild bundle of remark-rehype@11.1.2 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
   "spec": {
-    "total": 6,
-    "pass": 6,
-    "label": "package tests"
+    "total": 16,
+    "pass": 16,
+    "label": "official suite"
   },
   "play": {
     "kind": "json-json",
@@ -56,18 +56,18 @@
     {
       "id": "itslil",
       "name": "@itslil/remark-rehype · library",
-      "raw": 3888,
-      "gzip9": 1604,
-      "brotli11": 1434,
+      "raw": 16951,
+      "gzip9": 6077,
+      "brotli11": 5455,
       "note": "LilScript js-module, extern_fields true. The npm ESM.",
       "primary": true
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/remark-rehype · closed",
-      "raw": 3799,
-      "gzip9": 1543,
-      "brotli11": 1380,
+      "raw": 16862,
+      "gzip9": 6012,
+      "brotli11": 5391,
       "note": "Same source, extern_fields false"
     }
   ],

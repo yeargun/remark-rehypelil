@@ -1,6 +1,6 @@
 # @itslil/remark-rehype
 
-remark-rehype reimplemented in LilScript. This is **not** the official [`remark-rehype`](https://github.com/remarkjs/remark-rehype) package.
+Official [`remark-rehype@11.1.2`](https://github.com/remarkjs/remark-rehype) algorithms rewritten in LilScript. Official test suite 16/16. Not affiliated with upstream.
 
 **Site:** [yeargun.github.io/remark-rehypelil/](https://yeargun.github.io/remark-rehypelil/)
 
