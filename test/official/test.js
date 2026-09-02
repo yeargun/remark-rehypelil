@@ -18,8 +18,7 @@ test('remarkRehype', async function (t) {
       'default',
       'defaultFootnoteBackContent',
       'defaultFootnoteBackLabel',
-      'defaultHandlers',
-      'remarkRehype'
+      'defaultHandlers'
     ])
   })
 

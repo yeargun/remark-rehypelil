@@ -20,7 +20,8 @@ for (const path of required) {
 }
 const manifest = JSON.parse(readFileSync("package.json", "utf8"))
 if (manifest.name !== "@itslil/remark-rehype") throw new Error("unexpected package name")
-if (manifest.dependencies && Object.keys(manifest.dependencies).length) {
-  throw new Error("package must stay dependency-free")
+const expectedDependencies = ["@types/hast", "@types/mdast", "unified", "vfile"]
+if (JSON.stringify(Object.keys(manifest.dependencies ?? {}).sort()) !== JSON.stringify(expectedDependencies)) {
+  throw new Error("unexpected declaration dependencies")
 }
 console.log(`npm pack: ${result.entryCount} files, ${result.size} bytes packed, ${result.unpackedSize} bytes unpacked`)

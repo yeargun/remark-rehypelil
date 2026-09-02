@@ -16,7 +16,7 @@ export string jsString(JsValue value) {
   if (JS.isNullish(value)) {
     return "null";
   }
-  return JS.string(value);
+  return JS.string(JS.call(String, JS.undefined(), value));
 }
 
 export string stringField(JsValue node, string key) {
@@ -41,13 +41,6 @@ export JsValue arr1(JsValue a) {
   return out;
 }
 
-export JsValue arr2(JsValue a, JsValue b) {
-  JsValue out = JS.array();
-  JS.push(out, a);
-  JS.push(out, b);
-  return out;
-}
-
 export JsValue element(string tagName, JsValue properties, JsValue children) {
   return JS.object("type", "element", "tagName", tagName, "properties", properties, "children", children);
 }
@@ -69,7 +62,9 @@ export void assignProps(JsValue target, JsValue source) {
     return;
   }
   for (string key in source) {
-    target[key] = JS.get(source, key);
+    if (hasOwn(source, key)) {
+      target[key] = JS.get(source, key);
+    }
   }
 }
 

@@ -4,6 +4,7 @@ import {
   makeFootnoteBackContent,
   makeFootnoteBackLabel
 } from "./hast/convert.lil";
+import { hasOwn } from "./hast/types.lil";
 
 extern JsValue Promise;
 
@@ -12,7 +13,9 @@ void assignOwn(JsValue target, JsValue source) {
     return;
   }
   for (string key in source) {
-    target[key] = JS.get(source, key);
+    if (hasOwn(source, key)) {
+      target[key] = JS.get(source, key);
+    }
   }
 }
 
@@ -58,7 +61,7 @@ JsValue attach(JsValue _self, JsValue destination, JsValue options) {
   });
 }
 
-export JsValue remarkRehype = JS.method2(attach);
+JsValue remarkRehype = JS.method2(attach);
 export JsValue default = remarkRehype;
 export JsValue defaultHandlers = makeDefaultHandlers();
 export JsValue defaultFootnoteBackContent = makeFootnoteBackContent();

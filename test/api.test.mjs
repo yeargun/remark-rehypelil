@@ -3,7 +3,15 @@ import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, it } from "node:test"
-import remarkRehype, { remarkRehype as named } from "../dist/remark-rehype.esm.js"
+import {
+  defaultFootnoteBackContent as officialFootnoteBackContent,
+  defaultFootnoteBackLabel as officialFootnoteBackLabel,
+} from "mdast-util-to-hast"
+import remarkRehype, {
+  defaultFootnoteBackContent,
+  defaultFootnoteBackLabel,
+  defaultHandlers,
+} from "../dist/remark-rehype.esm.js"
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 
@@ -18,13 +26,61 @@ const paragraph = {
 }
 
 describe("remark-rehype", () => {
-  it("exports the plugin as default and named", () => {
+  it("exports the plugin as default", () => {
     assert.equal(typeof remarkRehype, "function")
-    assert.equal(named, remarkRehype)
+  })
+
+  it("exports the mdast-util-to-hast public helpers", () => {
+    assert.equal(typeof defaultFootnoteBackContent, "function")
+    assert.equal(typeof defaultFootnoteBackLabel, "function")
+    assert.equal(typeof defaultHandlers, "object")
+    assert.equal(defaultFootnoteBackContent(0, 2)[1].children[0].value, "2")
+    assert.deepEqual(Object.keys(defaultHandlers).sort(), [
+      "blockquote",
+      "break",
+      "code",
+      "definition",
+      "delete",
+      "emphasis",
+      "footnoteDefinition",
+      "footnoteReference",
+      "heading",
+      "html",
+      "image",
+      "imageReference",
+      "inlineCode",
+      "link",
+      "linkReference",
+      "list",
+      "listItem",
+      "paragraph",
+      "root",
+      "strong",
+      "table",
+      "tableCell",
+      "tableRow",
+      "text",
+      "thematicBreak",
+      "toml",
+      "yaml",
+    ])
+  })
+
+  it("preserves numeric footnote helper arguments like upstream", () => {
+    for (const value of [1.5, 2.5, Number.POSITIVE_INFINITY, Number.NaN]) {
+      assert.deepEqual(
+        defaultFootnoteBackContent(0, value),
+        officialFootnoteBackContent(0, value),
+      )
+      assert.equal(
+        defaultFootnoteBackLabel(value, value),
+        officialFootnoteBackLabel(value, value),
+      )
+    }
   })
 
   it("transforms a paragraph fixture into a p element", () => {
-    const transform = named.call({})
+    const transform = remarkRehype.call({})
     const hast = transform(paragraph)
     assert.equal(hast.type, "root")
     assert.equal(hast.children[0].type, "element")
@@ -32,8 +88,8 @@ describe("remark-rehype", () => {
     assert.equal(hast.children[0].children[0].value, "hi")
   })
 
-  it("maps math and task lists", () => {
-    const transform = named.call({})
+  it("maps unknown value nodes and task lists like upstream", () => {
+    const transform = remarkRehype.call({})
     const hast = transform({
       type: "root",
       children: [
@@ -54,7 +110,8 @@ describe("remark-rehype", () => {
       ],
     })
     const tags = JSON.stringify(hast)
-    assert.match(tags, /math/)
+    assert.equal(hast.children[0].type, "text")
+    assert.equal(hast.children[0].value, "x")
     assert.match(tags, /checkbox/)
     assert.match(tags, /contains-task-list/)
   })

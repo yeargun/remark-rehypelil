@@ -1,7 +1,6 @@
 import {
   applyData,
   arr1,
-  arr2,
   arrayIncludes,
   arrayIndexOf,
   cloneValue,
@@ -142,18 +141,6 @@ JsValue handleCode(JsValue _s, JsValue state, JsValue node, JsValue _p) {
 
 JsValue handleTableCell(JsValue _s, JsValue state, JsValue node, JsValue _p) {
   return finish(state, node, element("td", JS.object(), stateAll(state, node)));
-}
-
-JsValue handleInlineMath(JsValue _s, JsValue state, JsValue node, JsValue _p) {
-  JsValue props = JS.object();
-  props["className"] = arr2("math", "math-inline");
-  return element("span", props, arr1(textNode(stringField(node, "value"))));
-}
-
-JsValue handleMath(JsValue _s, JsValue state, JsValue node, JsValue _p) {
-  JsValue props = JS.object();
-  props["className"] = arr2("math", "math-display");
-  return element("div", props, arr1(textNode(stringField(node, "value"))));
 }
 
 JsValue handleLink(JsValue _s, JsValue state, JsValue node, JsValue _p) {
@@ -498,7 +485,7 @@ JsValue oneImpl(JsValue self, JsValue node, JsValue parent) {
     if (hasOwn(node, "children")) {
       JsValue copied = JS.object();
       for (string key in node) {
-        if (key != "children") {
+        if (key != "children" && hasOwn(node, key)) {
           copied[key] = cloneValue(JS.get(node, key));
         }
       }
@@ -579,8 +566,6 @@ export JsValue makeDefaultHandlers() {
   handlers["table"] = JS.method3(handleTable);
   handlers["tableRow"] = JS.method3(handleTableRow);
   handlers["tableCell"] = JS.method3(handleTableCell);
-  handlers["inlineMath"] = JS.method3(handleInlineMath);
-  handlers["math"] = JS.method3(handleMath);
   handlers["definition"] = JS.method3(handleIgnore);
   handlers["yaml"] = JS.method3(handleIgnore);
   handlers["toml"] = JS.method3(handleIgnore);
@@ -652,7 +637,9 @@ JsValue createState(JsValue tree, JsValue options) {
   JsValue extra = JS.get(settings, "handlers");
   if (!JS.isUndefined(extra) && !JS.isNullish(extra) && JS.typeOf(extra) == "object") {
     for (string key in extra) {
-      JS.get(state, "handlers")[key] = JS.get(extra, key);
+      if (hasOwn(extra, key)) {
+        JS.get(state, "handlers")[key] = JS.get(extra, key);
+      }
     }
   }
   state["patch"] = JS.method2(patchMethod);
@@ -700,18 +687,19 @@ JsValue handleFootnoteReference(JsValue _s, JsValue state, JsValue node, JsValue
 
 JsValue footnoteBackContentImpl(JsValue _s, JsValue _ref, JsValue reref) {
   JsValue result = arr1(textNode("↩"));
-  if (JS.number(reref).toInt() > 1) {
-    JS.push(result, element("sup", JS.object(), arr1(textNode(jsString(reref)))));
+  float rereferenceIndex = JS.number(reref);
+  if (rereferenceIndex > 1) {
+    JS.push(result, element("sup", JS.object(), arr1(textNode(jsString(rereferenceIndex)))));
   }
   return result;
 }
 
 JsValue footnoteBackLabelImpl(JsValue _s, JsValue ref, JsValue reref) {
-  int referenceIndex = JS.number(ref).toInt();
-  int rereferenceIndex = JS.number(reref).toInt();
-  string text = "Back to reference " + (referenceIndex + 1).toString();
+  float referenceIndex = JS.number(ref);
+  float rereferenceIndex = JS.number(reref);
+  string text = "Back to reference " + jsString(referenceIndex + 1.0);
   if (rereferenceIndex > 1) {
-    text = text + "-" + rereferenceIndex.toString();
+    text = text + "-" + jsString(rereferenceIndex);
   }
   return text;
 }
