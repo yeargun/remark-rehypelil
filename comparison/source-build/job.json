@@ -1,0 +1,33 @@
+{
+  "source": {
+    "repository": "https://github.com/remarkjs/remark-rehype.git",
+    "commit": "b5a2e5bb0f14607b6fc79ccbfdf0d518a4f304de",
+    "package": "remark-rehype",
+    "version": "11.1.2",
+    "directory": "."
+  },
+  "portSource": {
+    "commit": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c"
+  },
+  "compilerCommit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
+  "install": [
+    "npm",
+    "install",
+    "--ignore-scripts",
+    "--no-audit",
+    "--no-fund"
+  ],
+  "setup": [],
+  "build": [
+    "npm",
+    "run",
+    "build"
+  ],
+  "clean": [],
+  "entry": "index.js",
+  "defaultExport": true,
+  "external": [],
+  "esmScope": "remark-rehype@11.1.2 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+  "lilscriptBuild": "node scripts/build.mjs --compile --force",
+  "test": "npm run test:types && node --test test/*.test.mjs test/official/test.js"
+}

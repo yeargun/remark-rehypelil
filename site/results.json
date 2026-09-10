@@ -12,7 +12,7 @@
   "spec": {
     "total": 18,
     "pass": 18,
-    "label": "repository checks"
+    "label": "runtime checks"
   },
   "play": {
     "kind": "json-json",
@@ -22,13 +22,13 @@
     {
       "id": "official",
       "name": "Official remark-rehype@11.1.2 graph",
-      "raw": 40230,
-      "gzip9": 8984,
-      "brotli11": 8028,
+      "raw": 40203,
+      "gzip9": 8978,
+      "brotli11": 8023,
       "note": "esbuild bundle of the published package plus runtime deps",
       "diagnostic": false,
-      "measuredAt": "2026-09-10T14:01:01Z",
-      "artifactSha256": "d7cb4e3e4f6eb506f93739bb485d139981a0a39526a71646dae695c671ca0971"
+      "measuredAt": "2026-09-10T20:41:22Z",
+      "artifactSha256": "0b1396a9a883d2317aff08019cc3d265caafbad2cd77b09518c0f26a4ca42396"
     },
     {
       "id": "official-terser-mangle",
@@ -38,7 +38,7 @@
       "brotli11": 5000,
       "note": "Terser compress of that graph, mangle: true",
       "baseline": true,
-      "measuredAt": "2026-09-10T14:01:01Z",
+      "measuredAt": "2026-09-10T20:41:22Z",
       "artifactSha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
     },
     {
@@ -48,7 +48,7 @@
       "gzip9": 6691,
       "brotli11": 6068,
       "note": "Terser compress of that graph, mangle: false",
-      "measuredAt": "2026-09-10T14:01:01Z",
+      "measuredAt": "2026-09-10T20:41:22Z",
       "artifactSha256": "12d9ecc3293ac1828ef4491a0fafec6ccad95cc3f45cf993ace7377d70d484b0"
     },
     {
@@ -58,7 +58,7 @@
       "gzip9": 5921,
       "brotli11": 5386,
       "note": "esbuild minify of that graph",
-      "measuredAt": "2026-09-10T14:01:01Z",
+      "measuredAt": "2026-09-10T20:41:22Z",
       "artifactSha256": "3f7ad21a0564c1675cb9e29b7479e3dd8d4d08f8cbdf40001d4dd00c99561988"
     },
     {
@@ -67,9 +67,9 @@
       "raw": 14290,
       "gzip9": 4823,
       "brotli11": 4333,
-      "note": "ESM output from LilScript 63c2896.",
+      "note": "ESM output from LilScript 4dc4e33.",
       "primary": true,
-      "measuredAt": "2026-09-10T14:01:01Z",
+      "measuredAt": "2026-09-10T20:41:22Z",
       "artifactSha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
     },
     {
@@ -78,8 +78,8 @@
       "raw": 15090,
       "gzip9": 5063,
       "brotli11": 4490,
-      "note": "ESM output from LilScript 63c2896.",
-      "measuredAt": "2026-09-10T14:01:01Z",
+      "note": "ESM output from LilScript 4dc4e33.",
+      "measuredAt": "2026-09-10T20:41:22Z",
       "artifactSha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
     }
   ],
@@ -95,5 +95,5 @@
       "documentMs": 0.03254099999958271
     }
   ],
-  "sizeMeasuredAt": "2026-09-10T14:01:01Z"
+  "sizeMeasuredAt": "2026-09-10T20:41:22Z"
 }

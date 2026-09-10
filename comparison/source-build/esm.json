@@ -1,0 +1,113 @@
+{
+  "source": {
+    "repository": "https://github.com/remarkjs/remark-rehype.git",
+    "commit": "b5a2e5bb0f14607b6fc79ccbfdf0d518a4f304de",
+    "package": "remark-rehype",
+    "version": "11.1.2",
+    "directory": "."
+  },
+  "entry": "index.js",
+  "scope": "remark-rehype@11.1.2 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+  "external": [],
+  "samples": [
+    {
+      "bundleSeconds": 0.011777057000000006,
+      "wallSeconds": 0.135707182
+    },
+    {
+      "bundleSeconds": 0.006932296000000008,
+      "wallSeconds": 0.097218785
+    },
+    {
+      "bundleSeconds": 0.006181713000000002,
+      "wallSeconds": 0.07987003099999998
+    }
+  ],
+  "medianSeconds": 0.097218785,
+  "toolchain": {
+    "esbuild": "0.28.1",
+    "terser": "5.51.2"
+  },
+  "artifacts": [
+    {
+      "path": "original.esm.js",
+      "raw": 17051,
+      "gzip9": 5529,
+      "brotli11": 5000,
+      "sha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
+    },
+    {
+      "path": "original.unminified.js",
+      "raw": 40203,
+      "gzip9": 8978,
+      "brotli11": 8023,
+      "sha256": "0b1396a9a883d2317aff08019cc3d265caafbad2cd77b09518c0f26a4ca42396"
+    },
+    {
+      "path": "original.terser-nomangle.js",
+      "raw": 25170,
+      "gzip9": 6691,
+      "brotli11": 6068,
+      "sha256": "12d9ecc3293ac1828ef4491a0fafec6ccad95cc3f45cf993ace7377d70d484b0"
+    },
+    {
+      "path": "original.esbuild.js",
+      "raw": 17638,
+      "gzip9": 5921,
+      "brotli11": 5386,
+      "sha256": "3f7ad21a0564c1675cb9e29b7479e3dd8d4d08f8cbdf40001d4dd00c99561988"
+    }
+  ],
+  "inputs": [
+    "node_modules/mdast-util-to-hast/lib/handlers/blockquote.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/break.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/code.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/delete.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/emphasis.js",
+    "node_modules/micromark-util-character/index.js",
+    "node_modules/micromark-util-encode/index.js",
+    "node_modules/micromark-util-sanitize-uri/index.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/footnote-reference.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/heading.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/html.js",
+    "node_modules/mdast-util-to-hast/lib/revert.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/image-reference.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/image.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/inline-code.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/link-reference.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/link.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/list-item.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/list.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/paragraph.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/root.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/strong.js",
+    "node_modules/unist-util-position/lib/index.js",
+    "node_modules/unist-util-position/index.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/table.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/table-row.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/table-cell.js",
+    "node_modules/trim-lines/index.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/text.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/thematic-break.js",
+    "node_modules/mdast-util-to-hast/lib/handlers/index.js",
+    "node_modules/devlop/lib/default.js",
+    "node_modules/@ungap/structured-clone/esm/types.js",
+    "node_modules/@ungap/structured-clone/esm/deserialize.js",
+    "node_modules/@ungap/structured-clone/esm/serialize.js",
+    "node_modules/@ungap/structured-clone/esm/index.js",
+    "node_modules/mdast-util-to-hast/lib/footer.js",
+    "node_modules/unist-util-is/lib/index.js",
+    "node_modules/unist-util-is/index.js",
+    "node_modules/unist-util-visit-parents/lib/color.js",
+    "node_modules/unist-util-visit-parents/lib/index.js",
+    "node_modules/unist-util-visit-parents/index.js",
+    "node_modules/unist-util-visit/lib/index.js",
+    "node_modules/unist-util-visit/index.js",
+    "node_modules/mdast-util-to-hast/lib/state.js",
+    "node_modules/mdast-util-to-hast/lib/index.js",
+    "node_modules/mdast-util-to-hast/index.js",
+    "lib/index.js",
+    "index.js",
+    "public-esm-entry.mjs"
+  ]
+}

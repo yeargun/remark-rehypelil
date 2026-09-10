@@ -238,12 +238,38 @@
   "publicationSourceFingerprint": "9b3af4989c876d7f3b8301e0589e61a8e04fa1e154185f73a6572c2acc91b183",
   "comparisonArtifacts": [
     {
+      "path": "site/esm-comparison/original.js",
+      "sha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
+    },
+    {
       "path": "site/esm-comparison/lilscript.js",
       "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
     },
     {
-      "path": "site/esm-comparison/original.js",
-      "sha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
+      "path": "site/source-build.json",
+      "sha256": "1375440e66adce8ab167041141f0040488d042deb2e3346b3d63e58b117dcbb7"
+    },
+    {
+      "path": "site/comparison.json",
+      "sha256": "c8e1e84f6fe16751cfd75ab996c5dfe79c2822c3a21984af05c31293dc55c68b"
     }
-  ]
+  ],
+  "sourceBuildReceipt": "comparison/source-build/result.json",
+  "currentMeasurement": {
+    "compiler": {
+      "commit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
+      "sha256": "0616048498eb9eb2e4bd75b39e8e6a083733ada647e16108edfee30ad183beeb"
+    },
+    "source": {
+      "commit": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c"
+    },
+    "upstream": {
+      "repository": "https://github.com/remarkjs/remark-rehype.git",
+      "commit": "b5a2e5bb0f14607b6fc79ccbfdf0d518a4f304de",
+      "package": "remark-rehype",
+      "version": "11.1.2",
+      "directory": "."
+    },
+    "compatibility": "Runtime checks: 18/18 pass."
+  }
 }
