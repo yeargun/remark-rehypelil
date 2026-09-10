@@ -1,7 +1,5 @@
 # @itslil/remark-rehype
 
-<!-- current-build-audit -->
-**Build audit, 2026-09-10:** [verified; compiler, machine, build times, version gaps and behavior checks](https://yeargun.github.io/remark-rehypelil/#build-audit). The [JSON receipt](site/build-audit.json) records the current comparison; older benchmark prose retains its original scope.
 
 
 Official [`remark-rehype@11.1.2`](https://github.com/remarkjs/remark-rehype) algorithms rewritten in LilScript. Upstream-derived and package tests 17/17. Not affiliated with upstream.

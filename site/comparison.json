@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-09-10T14:01:01Z",
+  "name": "remark-rehypelil",
+  "compiler": {
+    "commit": "63c2896a71e60cbcca7870fe979f9d6ecaff3452",
+    "sha256": "2319462ef7d858c8e2a5a767260aa4f80d325e0045afa0cc86cc122d1299b059",
+    "profile": "release",
+    "dirty": false
+  },
+  "upstream": {
+    "package": "remark-rehype",
+    "version": "11.1.2"
+  },
+  "scope": "remark-rehype@11.1.2 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+  "compatibility": "Repository checks pass.",
+  "tests": {
+    "pass": 18,
+    "total": 18
+  },
+  "buildComplete": true,
+  "machine": {
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "logicalCpus": 16,
+    "memoryBytes": 33648435200,
+    "os": "Ubuntu 24.04.4 LTS",
+    "node": "v22.23.2",
+    "rayonThreads": 16,
+    "provider": "Azure",
+    "instanceClass": "Standard_D16als_v7"
+  },
+  "build": {
+    "compilerSeconds": 18.534783124923706,
+    "packageSeconds": 20.832072704999973,
+    "originalSeconds": 0.173937554,
+    "packageScope": "node scripts/build.mjs --compile --force; 2 successful compiler invocations plus package generation.",
+    "originalScope": "remark-rehype@11.1.2 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+    "protocol": "Same shared worker for both lanes; one fresh LilScript package build; median of three sequential upstream ESM builds (PlayCanvas records one native reference build). Outside compiler jobs were observed in the pool, so contention is not excluded. Dependencies, tests and compression measurement are outside these build times."
+  },
+  "esm": {
+    "lilscript": {
+      "raw": 14290,
+      "gzip9": 4823,
+      "brotli11": 4333,
+      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605",
+      "file": "./esm-comparison/lilscript.js"
+    },
+    "original": {
+      "raw": 17051,
+      "gzip9": 5529,
+      "brotli11": 5000,
+      "sha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a",
+      "file": "./esm-comparison/original.js"
+    }
+  }
+}

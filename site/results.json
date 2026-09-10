@@ -10,9 +10,9 @@
   "warmupDiscard": 3,
   "comparison": "Official rows are an esbuild bundle of remark-rehype@11.1.2 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
   "spec": {
-    "total": 17,
-    "pass": 17,
-    "label": "upstream and package suites"
+    "total": 18,
+    "pass": 18,
+    "label": "repository checks"
   },
   "play": {
     "kind": "json-json",
@@ -67,7 +67,7 @@
       "raw": 14290,
       "gzip9": 4823,
       "brotli11": 4333,
-      "note": "Fresh packaged ESM, rebuilt with compiler 63c2896a71.",
+      "note": "ESM output from LilScript 63c2896.",
       "primary": true,
       "measuredAt": "2026-09-10T14:01:01Z",
       "artifactSha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
@@ -78,7 +78,7 @@
       "raw": 15090,
       "gzip9": 5063,
       "brotli11": 4490,
-      "note": "Same source, extern_fields false; diagnostic only",
+      "note": "ESM output from LilScript 63c2896.",
       "measuredAt": "2026-09-10T14:01:01Z",
       "artifactSha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
     }
@@ -95,7 +95,5 @@
       "documentMs": 0.03254099999958271
     }
   ],
-  "sizeMeasuredAt": "2026-09-10T14:01:01Z",
-  "buildAudit": "./build-audit.json",
-  "runtimeEvidenceStatus": "Historical; runtime throughput was not republished as a measurement of this compiler."
+  "sizeMeasuredAt": "2026-09-10T14:01:01Z"
 }
