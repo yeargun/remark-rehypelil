@@ -1,31 +1,31 @@
 {
   "schemaVersion": 1,
   "name": "remark-rehypelil",
-  "startedAt": "2026-09-10T20:40:05Z",
+  "startedAt": "2026-09-24T06:16:32Z",
   "machine": {
     "provider": "Azure",
-    "instanceClass": "Standard_D16als_v7",
-    "cpu": "AMD EPYC 9V45 96-Core Processor",
-    "logicalCpus": 16,
-    "memoryBytes": 33648431104,
-    "os": "Ubuntu 24.04.4 LTS",
-    "kernel": "6.17.0-1022-azure",
+    "instanceClass": "Standard_B8als_v2",
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "logicalCpus": 8,
+    "memoryBytes": 16706420736,
+    "os": "Ubuntu 24.04.3 LTS",
+    "kernel": "7.0.0-1014-azure",
     "node": "v24.11.1",
     "rayonThreads": 8,
     "loadAtStart": [
-      3.25048828125,
-      2.19189453125,
-      2.0517578125
+      4.796875,
+      11.66455078125,
+      14.1416015625
     ],
     "loadAtEnd": [
-      3.4345703125,
-      2.51220703125,
-      2.1787109375
+      4.26123046875,
+      10.8818359375,
+      13.8017578125
     ]
   },
   "compiler": {
-    "commit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
-    "sha256": "0616048498eb9eb2e4bd75b39e8e6a083733ada647e16108edfee30ad183beeb"
+    "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
+    "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9"
   },
   "source": {
     "repository": "https://github.com/remarkjs/remark-rehype.git",
@@ -35,8 +35,9 @@
     "directory": "."
   },
   "portSource": {
-    "commit": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c"
+    "commit": "e8690b8 plus the release working tree (committed together with these records)"
   },
+  "prerequisiteAdjustments": null,
   "steps": {
     "original-install": {
       "command": [
@@ -47,29 +48,13 @@
         "--no-fund"
       ],
       "cwd": "upstream",
-      "wallSeconds": 8.277165232999323,
-      "cpuSeconds": 6.445391,
+      "wallSeconds": 18.004193872999167,
+      "cpuSeconds": 15.833440999999999,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-install.log",
-      "logSha256": "7028c7ed236dd72125113b5ec1760c2dfd619c4d01dc6a5dafdb8635cdc9eee7",
-      "tail": "npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n\nadded 854 packages in 8s\n"
-    },
-    "lilscript-install": {
-      "command": [
-        "npm",
-        "ci",
-        "--no-audit",
-        "--no-fund"
-      ],
-      "cwd": "port",
-      "wallSeconds": 0.564615557000252,
-      "cpuSeconds": 0.6789700000000005,
-      "exitCode": 0,
-      "timedOut": false,
-      "log": "lilscript-install.log",
-      "logSha256": "f48618845b061875e6ae12a1f91ca60b254dd91e00cd9fc840ce84ac0c230fc0",
-      "tail": "\nadded 69 packages in 483ms\n"
+      "logSha256": "038771d082ca632aefdf4ee7b801c2dbe1d6526853678550938963e4cee15af4",
+      "tail": "npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n\nadded 853 packages in 18s\n"
     },
     "original-build-1": {
       "command": [
@@ -78,8 +63,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 1.5167154410000876,
-      "cpuSeconds": 2.801208,
+      "wallSeconds": 3.0206056739989435,
+      "cpuSeconds": 5.3716479999999995,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-1.log",
@@ -93,8 +78,8 @@
         "node scripts/build.mjs --compile --force"
       ],
       "cwd": "port",
-      "wallSeconds": 20.800665773999754,
-      "cpuSeconds": 70.71533600000001,
+      "wallSeconds": 0.41477263800334185,
+      "cpuSeconds": 0.3850850000000001,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-1.log",
@@ -103,35 +88,35 @@
       "invocations": [
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js"
           ],
-          "startedAt": 1789072815.5244195,
-          "wallSeconds": 18.781459093093872,
+          "startedAt": 1790230613.6660855,
+          "wallSeconds": 0.19711709022521973,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js",
-          "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js",
+          "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
         },
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.closed.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.closed.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js"
           ],
-          "startedAt": 1789072834.3299327,
-          "wallSeconds": 1.8944432735443115,
+          "startedAt": 1790230613.9007676,
+          "wallSeconds": 0.058793067932128906,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js",
-          "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js",
+          "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
         }
       ]
     },
@@ -142,8 +127,8 @@
         "node scripts/build.mjs --compile --force"
       ],
       "cwd": "port",
-      "wallSeconds": 20.80176064099942,
-      "cpuSeconds": 70.72892,
+      "wallSeconds": 0.4147789599956013,
+      "cpuSeconds": 0.3848249999999984,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-2.log",
@@ -152,35 +137,35 @@
       "invocations": [
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js"
           ],
-          "startedAt": 1789072836.326418,
-          "wallSeconds": 18.791720151901245,
+          "startedAt": 1790230614.0828285,
+          "wallSeconds": 0.1972813606262207,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js",
-          "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js",
+          "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
         },
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.closed.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.closed.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js"
           ],
-          "startedAt": 1789072855.1417484,
-          "wallSeconds": 1.8854167461395264,
+          "startedAt": 1790230614.3175838,
+          "wallSeconds": 0.05853748321533203,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js",
-          "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js",
+          "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
         }
       ]
     },
@@ -191,8 +176,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 1.466739632000099,
-      "cpuSeconds": 2.7346839999999917,
+      "wallSeconds": 2.970778654998867,
+      "cpuSeconds": 5.5948090000000015,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-2.log",
@@ -206,8 +191,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 1.4667669079999541,
-      "cpuSeconds": 2.71523899999999,
+      "wallSeconds": 3.0223610179964453,
+      "cpuSeconds": 5.629694000000004,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-3.log",
@@ -221,8 +206,8 @@
         "node scripts/build.mjs --compile --force"
       ],
       "cwd": "port",
-      "wallSeconds": 20.801773626000795,
-      "cpuSeconds": 70.85777499999999,
+      "wallSeconds": 0.41481165699951816,
+      "cpuSeconds": 0.3920150000000042,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-3.log",
@@ -231,48 +216,48 @@
       "invocations": [
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js"
           ],
-          "startedAt": 1789072860.0768158,
-          "wallSeconds": 18.803722858428955,
+          "startedAt": 1790230620.4975011,
+          "wallSeconds": 0.19874978065490723,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js",
-          "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js",
+          "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
         },
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.closed.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.closed.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js"
           ],
-          "startedAt": 1789072878.9045603,
-          "wallSeconds": 1.8935275077819824,
+          "startedAt": 1790230620.7345471,
+          "wallSeconds": 0.059952497482299805,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js",
-          "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js",
+          "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
         }
       ]
     },
     "original-esm": {
       "command": [
         "node",
-        "/home/lilfarm/source-perf-20260910/tools/source-esm.mjs",
-        "/home/lilfarm/source-perf-20260910",
+        "/home/azureuser/lilscript-work/release-m2/remark-rehypelil/source-build/tools/source-esm.mjs",
+        "/home/azureuser/lilscript-work/release-m2/remark-rehypelil/source-build",
         "remark-rehypelil"
       ],
       "cwd": "upstream",
-      "wallSeconds": 0.5647179890002008,
-      "cpuSeconds": 0.957546999999991,
+      "wallSeconds": 1.2167606910079485,
+      "cpuSeconds": 2.1105410000000013,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-esm.log",
@@ -286,13 +271,13 @@
         "npm run test:types && node --test test/*.test.mjs test/official/test.js"
       ],
       "cwd": "port",
-      "wallSeconds": 0.7654130279997844,
-      "cpuSeconds": 1.4032219999999986,
+      "wallSeconds": 1.668056346999947,
+      "cpuSeconds": 3.118646,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-tests.log",
-      "logSha256": "4e616287686a4e8f075079873b39f03370d0e9f997404f1a86a8641d21305d97",
-      "tail": "\n> @itslil/remark-rehype@11.1.4 test:types\n> tsc --noEmit\n\n\u25b6 remark-rehype\n  \u2714 exports the plugin as default (0.379281ms)\n  \u2714 exports the mdast-util-to-hast public helpers (0.782679ms)\n  \u2714 preserves numeric footnote helper arguments like upstream (0.200743ms)\n  \u2714 transforms a paragraph fixture into a p element (0.512372ms)\n  \u2714 maps unknown value nodes and task lists like upstream (0.343969ms)\n  \u2714 keeps pinned keys in the library artifact (0.158028ms)\n\u2714 remark-rehype (2.968453ms)\n\u25b6 remark-rehype closed\n  \u2714 ships a closed artifact with the default export (0.347053ms)\n\u2714 remark-rehype closed (1.226748ms)\n\u25b6 remarkRehype\n  \u2714 should expose the public api (1.003181ms)\n  \u2714 should mutate (3.120933ms)\n  \u2714 should mutate w/ options (0.457699ms)\n  \u2714 should mutate w/ options and explicit unknown 2nd parameter (0.35842ms)\n  \u2714 should mutate with `processor: undefined` and options (0.313112ms)\n  \u2714 should bridge (1.344756ms)\n  \u2714 should bridge with options (0.895019ms)\n  \u2714 should understand bridge types (0.424069ms)\n  \u2714 should understand mutate types (0.376307ms)\n\u2714 remarkRehype (9.258331ms)\n\u25b6 site\n  \u2714 has a markedlil-style lab with receipts (2.320867ms)\n\u2714 site (2.772928ms)\n\u2139 tests 18\n\u2139 suites 3\n\u2139 pass 18\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 99.438259\n"
+      "logSha256": "72c499d0e836689807ea93aa517372c12c90088852362eeaa6d170aac39c0085",
+      "tail": "\n> @itslil/remark-rehype@11.1.4 test:types\n> tsc --noEmit\n\n\u25b6 remark-rehype\n  \u2714 exports the plugin as default (1.258248ms)\n  \u2714 exports the mdast-util-to-hast public helpers (2.163644ms)\n  \u2714 preserves numeric footnote helper arguments like upstream (0.595336ms)\n  \u2714 transforms a paragraph fixture into a p element (0.376375ms)\n  \u2714 maps unknown value nodes and task lists like upstream (0.929171ms)\n  \u2714 keeps pinned keys in the library artifact (0.424986ms)\n\u2714 remark-rehype (7.601624ms)\n\u25b6 remark-rehype CommonJS and browser builds\n  \u2714 require() returns the ESM's exports, transforming alike (3.183785ms)\n  \u2714 the browser script sets the global remarkRehype and nothing else (2.979432ms)\n\u2714 remark-rehype CommonJS and browser builds (6.432903ms)\n\u25b6 remark-rehype closed\n  \u2714 ships a closed artifact with the default export (0.697137ms)\n\u2714 remark-rehype closed (2.521965ms)\n\u25b6 remarkRehype\n  \u2714 should expose the public api (1.84703ms)\n  \u2714 should mutate (6.385024ms)\n  \u2714 should mutate w/ options (0.956802ms)\n  \u2714 should mutate w/ options and explicit unknown 2nd parameter (1.596531ms)\n  \u2714 should mutate with `processor: undefined` and options (0.597309ms)\n  \u2714 should bridge (2.871209ms)\n  \u2714 should bridge with options (1.952489ms)\n  \u2714 should understand bridge types (0.850563ms)\n  \u2714 should understand mutate types (0.708157ms)\n\u2714 remarkRehype (19.86407ms)\n\u25b6 site\n  \u2714 has a markedlil-style lab with receipts (5.102501ms)\n  \u2714 records the compiler run it shows (0.47989ms)\n  \u2714 shows the sizes of the files that ship (2.637693ms)\n  \u2714 compares against the strongest recorded bar (0.507431ms)\n\u2714 site (10.517177ms)\n\u2139 tests 23\n\u2139 suites 4\n\u2139 pass 23\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 217.75206\n"
     }
   },
   "nativeBuilds": [
@@ -303,8 +288,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 1.5167154410000876,
-      "cpuSeconds": 2.801208,
+      "wallSeconds": 3.0206056739989435,
+      "cpuSeconds": 5.3716479999999995,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-1.log",
@@ -318,8 +303,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 1.466739632000099,
-      "cpuSeconds": 2.7346839999999917,
+      "wallSeconds": 2.970778654998867,
+      "cpuSeconds": 5.5948090000000015,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-2.log",
@@ -333,8 +318,8 @@
         "build"
       ],
       "cwd": "upstream",
-      "wallSeconds": 1.4667669079999541,
-      "cpuSeconds": 2.71523899999999,
+      "wallSeconds": 3.0223610179964453,
+      "cpuSeconds": 5.629694000000004,
       "exitCode": 0,
       "timedOut": false,
       "log": "original-build-3.log",
@@ -350,8 +335,8 @@
         "node scripts/build.mjs --compile --force"
       ],
       "cwd": "port",
-      "wallSeconds": 20.800665773999754,
-      "cpuSeconds": 70.71533600000001,
+      "wallSeconds": 0.41477263800334185,
+      "cpuSeconds": 0.3850850000000001,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-1.log",
@@ -360,35 +345,35 @@
       "invocations": [
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js"
           ],
-          "startedAt": 1789072815.5244195,
-          "wallSeconds": 18.781459093093872,
+          "startedAt": 1790230613.6660855,
+          "wallSeconds": 0.19711709022521973,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js",
-          "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js",
+          "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
         },
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.closed.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.closed.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js"
           ],
-          "startedAt": 1789072834.3299327,
-          "wallSeconds": 1.8944432735443115,
+          "startedAt": 1790230613.9007676,
+          "wallSeconds": 0.058793067932128906,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js",
-          "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js",
+          "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
         }
       ]
     },
@@ -399,8 +384,8 @@
         "node scripts/build.mjs --compile --force"
       ],
       "cwd": "port",
-      "wallSeconds": 20.80176064099942,
-      "cpuSeconds": 70.72892,
+      "wallSeconds": 0.4147789599956013,
+      "cpuSeconds": 0.3848249999999984,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-2.log",
@@ -409,35 +394,35 @@
       "invocations": [
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js"
           ],
-          "startedAt": 1789072836.326418,
-          "wallSeconds": 18.791720151901245,
+          "startedAt": 1790230614.0828285,
+          "wallSeconds": 0.1972813606262207,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js",
-          "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js",
+          "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
         },
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.closed.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.closed.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js"
           ],
-          "startedAt": 1789072855.1417484,
-          "wallSeconds": 1.8854167461395264,
+          "startedAt": 1790230614.3175838,
+          "wallSeconds": 0.05853748321533203,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js",
-          "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js",
+          "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
         }
       ]
     },
@@ -448,8 +433,8 @@
         "node scripts/build.mjs --compile --force"
       ],
       "cwd": "port",
-      "wallSeconds": 20.801773626000795,
-      "cpuSeconds": 70.85777499999999,
+      "wallSeconds": 0.41481165699951816,
+      "cpuSeconds": 0.3920150000000042,
       "exitCode": 0,
       "timedOut": false,
       "log": "lilscript-build-3.log",
@@ -458,35 +443,35 @@
       "invocations": [
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js"
           ],
-          "startedAt": 1789072860.0768158,
-          "wallSeconds": 18.803722858428955,
+          "startedAt": 1790230620.4975011,
+          "wallSeconds": 0.19874978065490723,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.raw.js",
-          "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.raw.js",
+          "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
         },
         {
           "args": [
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/src/entry.lil",
+            "/home/azureuser/remark-rehypelil/src/entry.lil",
             "--target",
             "js-module",
             "--config",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/lilscript.closed.toml",
+            "/home/azureuser/remark-rehypelil/lilscript.closed.toml",
             "-o",
-            "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js"
+            "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js"
           ],
-          "startedAt": 1789072878.9045603,
-          "wallSeconds": 1.8935275077819824,
+          "startedAt": 1790230620.7345471,
+          "wallSeconds": 0.059952497482299805,
           "exitCode": 0,
-          "output": "/home/lilfarm/source-perf-20260910/ports/remark-rehypelil/dist/remark-rehype.closed.js",
-          "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+          "output": "/home/azureuser/remark-rehypelil/dist/remark-rehype.closed.js",
+          "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
         }
       ]
     }
@@ -496,7 +481,7 @@
     "cleanOutputs": true,
     "dependencyInstallationTimedSeparately": true,
     "sourceArchives": "Pinned Git checkouts; original repository package build commands, followed by production ESM assembly.",
-    "workerUse": "Both implementations use the same machine and Node version. This shared build pool also runs unrelated jobs; timings are contextual wall times, with CPU time recorded separately."
+    "workerUse": "Both implementations use the same machine and Node version. The host is a burstable Azure VM and other sessions compiled on it during the run; timings are contextual wall times, with CPU time recorded separately."
   },
   "esm": {
     "source": {
@@ -511,19 +496,19 @@
     "external": [],
     "samples": [
       {
-        "bundleSeconds": 0.011777057000000006,
-        "wallSeconds": 0.135707182
+        "bundleSeconds": 0.02345418699999999,
+        "wallSeconds": 0.33937200399999995
       },
       {
-        "bundleSeconds": 0.006932296000000008,
-        "wallSeconds": 0.097218785
+        "bundleSeconds": 0.012964492000000006,
+        "wallSeconds": 0.23809533800000002
       },
       {
-        "bundleSeconds": 0.006181713000000002,
-        "wallSeconds": 0.07987003099999998
+        "bundleSeconds": 0.011798542000000111,
+        "wallSeconds": 0.19076907800000004
       }
     ],
-    "medianSeconds": 0.097218785,
+    "medianSeconds": 0.23809533800000002,
     "toolchain": {
       "esbuild": "0.28.1",
       "terser": "5.51.2"
@@ -613,63 +598,63 @@
   },
   "lilscriptArtifacts": [
     {
+      "path": "dist/remark-rehype.raw.js",
+      "raw": 16612,
+      "gzip9": 5103,
+      "brotli11": 4568,
+      "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
+    },
+    {
       "path": "dist/remark-rehype.closed.js",
-      "raw": 15090,
-      "gzip9": 5063,
-      "brotli11": 4490,
-      "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+      "raw": 18227,
+      "gzip9": 6832,
+      "brotli11": 5885,
+      "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
     },
     {
       "path": "dist/remark-rehype.cjs",
-      "raw": 15546,
-      "gzip9": 5266,
-      "brotli11": 4769,
-      "sha256": "0bb277c4ffcda2e9c9538407ec20d1e478acbd7da81196debb5f832f184150ff"
-    },
-    {
-      "path": "dist/remark-rehype.esm.js",
-      "raw": 14290,
-      "gzip9": 4823,
-      "brotli11": 4333,
-      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
-    },
-    {
-      "path": "dist/remark-rehype.raw.js",
-      "raw": 14201,
-      "gzip9": 4759,
-      "brotli11": 4272,
-      "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+      "raw": 16758,
+      "gzip9": 5211,
+      "brotli11": 4670,
+      "sha256": "f3557ab05e6f8960b359b50d0fee405b4bfcb0e62da78f65a5823f384ec5936b"
     },
     {
       "path": "dist/remark-rehype.umd.js",
-      "raw": 15653,
-      "gzip9": 5302,
-      "brotli11": 4802,
-      "sha256": "000e866dae8d29f28fd7ddc0f2c8556e00249d11e2f9b9b4b305c227c106c688"
+      "raw": 16649,
+      "gzip9": 5169,
+      "brotli11": 4633,
+      "sha256": "88ec523729f2c448d1d36aeae48d6b2622fa0a295947967b68217f3269541e87"
+    },
+    {
+      "path": "dist/remark-rehype.esm.js",
+      "raw": 16701,
+      "gzip9": 5170,
+      "brotli11": 4632,
+      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
     }
   ],
   "nativeBuildsSummary": {
     "samples": 3,
     "successful": 3,
-    "medianSeconds": 1.4667669079999541,
-    "minimumSeconds": 1.466739632000099,
-    "maximumSeconds": 1.5167154410000876
+    "medianSeconds": 3.0206056739989435,
+    "minimumSeconds": 2.970778654998867,
+    "maximumSeconds": 3.0223610179964453
   },
   "lilscriptBuildsSummary": {
     "samples": 3,
     "successful": 3,
-    "medianSeconds": 20.80176064099942,
-    "minimumSeconds": 20.800665773999754,
-    "maximumSeconds": 20.801773626000795
+    "medianSeconds": 0.4147789599956013,
+    "minimumSeconds": 0.41477263800334185,
+    "maximumSeconds": 0.41481165699951816
   },
   "status": "complete",
-  "finishedAt": "2026-09-10T20:41:22Z",
+  "finishedAt": "2026-09-24T06:17:03Z",
   "sourceBuild": {
     "original": {
       "complete": true,
-      "medianSeconds": 1.4667669079999541,
-      "minimumSeconds": 1.466739632000099,
-      "maximumSeconds": 1.5167154410000876,
+      "medianSeconds": 3.0206056739989435,
+      "minimumSeconds": 2.970778654998867,
+      "maximumSeconds": 3.0223610179964453,
       "samples": [
         {
           "command": [
@@ -677,8 +662,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 1.5167154410000876,
-          "cpuSeconds": 2.801208,
+          "wallSeconds": 3.0206056739989435,
+          "cpuSeconds": 5.3716479999999995,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-1.log",
@@ -690,8 +675,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 1.466739632000099,
-          "cpuSeconds": 2.7346839999999917,
+          "wallSeconds": 2.970778654998867,
+          "cpuSeconds": 5.5948090000000015,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-2.log",
@@ -703,8 +688,8 @@
             "run",
             "build"
           ],
-          "wallSeconds": 1.4667669079999541,
-          "cpuSeconds": 2.71523899999999,
+          "wallSeconds": 3.0223610179964453,
+          "cpuSeconds": 5.629694000000004,
           "exitCode": 0,
           "timedOut": false,
           "log": "original-build-3.log",
@@ -714,9 +699,9 @@
     },
     "lilscript": {
       "complete": true,
-      "medianSeconds": 20.80176064099942,
-      "minimumSeconds": 20.800665773999754,
-      "maximumSeconds": 20.801773626000795,
+      "medianSeconds": 0.4147789599956013,
+      "minimumSeconds": 0.41477263800334185,
+      "maximumSeconds": 0.41481165699951816,
       "samples": [
         {
           "command": [
@@ -724,8 +709,8 @@
             "-c",
             "node scripts/build.mjs --compile --force"
           ],
-          "wallSeconds": 20.800665773999754,
-          "cpuSeconds": 70.71533600000001,
+          "wallSeconds": 0.41477263800334185,
+          "cpuSeconds": 0.3850850000000001,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-1.log",
@@ -737,8 +722,8 @@
             "-c",
             "node scripts/build.mjs --compile --force"
           ],
-          "wallSeconds": 20.80176064099942,
-          "cpuSeconds": 70.72892,
+          "wallSeconds": 0.4147789599956013,
+          "cpuSeconds": 0.3848249999999984,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-2.log",
@@ -750,8 +735,8 @@
             "-c",
             "node scripts/build.mjs --compile --force"
           ],
-          "wallSeconds": 20.801773626000795,
-          "cpuSeconds": 70.85777499999999,
+          "wallSeconds": 0.41481165699951816,
+          "cpuSeconds": 0.3920150000000042,
           "exitCode": 0,
           "timedOut": false,
           "log": "lilscript-build-3.log",
@@ -763,6 +748,5 @@
     "cleanOutputs": true,
     "installationExcluded": true
   },
-  "prerequisiteAdjustments": null,
   "recordRepository": "https://github.com/yeargun/remark-rehypelil/tree/main/comparison/source-build"
 }

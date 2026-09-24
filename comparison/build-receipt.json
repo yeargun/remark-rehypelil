@@ -1,42 +1,38 @@
 {
   "schemaVersion": 1,
   "name": "remark-rehypelil",
-  "measuredAt": "2026-09-10T14:01:01Z",
-  "status": "verified",
+  "measuredAt": "2026-09-24T06:17:03Z",
+  "status": "published",
   "buildPassed": true,
-  "summary": "The fresh artifact was checked against the repository test command.",
-  "sourceCommit": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c",
-  "previousPublicCommit": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c",
+  "summary": "Rebuilt by the one LilScript compiler; every delivered file is compiler-written (a license banner and module wrappers are the only bytes the build adds).",
+  "sourceCommit": "e8690b8 plus the release working tree (committed together with these records)",
+  "previousPublicCommit": "81580d7702c9b836c06bba941e9816ea0b887983",
   "compiler": {
-    "commit": "63c2896a71e60cbcca7870fe979f9d6ecaff3452",
-    "sha256": "2319462ef7d858c8e2a5a767260aa4f80d325e0045afa0cc86cc122d1299b059",
+    "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
+    "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9",
     "profile": "release",
     "dirty": false
   },
   "machine": {
-    "cpu": "AMD EPYC 9V45 96-Core Processor",
-    "logicalCpus": 16,
-    "affinityCpus": 16,
-    "memoryBytes": 33648435200,
-    "os": "Ubuntu 24.04.4 LTS",
-    "kernel": "6.17.0-1022-azure",
-    "architecture": "x86_64",
-    "node": "v22.23.2",
-    "rayonThreads": 16,
     "provider": "Azure",
-    "instanceClass": "Standard_D16als_v7",
-    "parallelPortBuildsOnMachine": 1,
+    "instanceClass": "Standard_B8als_v2",
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "logicalCpus": 8,
+    "memoryBytes": 16706420736,
+    "os": "Ubuntu 24.04.3 LTS",
+    "kernel": "7.0.0-1014-azure",
+    "node": "v24.11.1",
+    "rayonThreads": 8,
     "loadAtStart": [
-      5.998046875,
-      5.9306640625,
-      2.83056640625
+      4.796875,
+      11.66455078125,
+      14.1416015625
     ],
     "loadAtEnd": [
-      5.35302734375,
-      5.78955078125,
-      2.8662109375
-    ],
-    "concurrencyNote": "The audit scheduled one port per worker, but this is a shared pool. Outside compiler jobs were observed during the run; timings are contextual wall times, not controlled speedup benchmarks."
+      4.26123046875,
+      10.8818359375,
+      13.8017578125
+    ]
   },
   "upstream": {
     "name": "remark-rehypelil",
@@ -45,26 +41,24 @@
     "latest": "11.1.2",
     "source": "https://www.npmjs.com/package/remark-rehype"
   },
-  "comparisonScope": "remark-rehype@11.1.2 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline Sizes use canonical zlib 1.3.1 gzip-9 and Google Brotli 1.1.0 quality 11.",
   "sizes": {
     "previous": {
-      "id": "itslil",
-      "name": "@itslil/remark-rehype \u00b7 library",
-      "raw": 13669,
-      "gzip9": 4888,
-      "brotli11": 4374,
-      "note": "LilScript js-module, extern_fields true. The npm ESM.",
-      "primary": true
-    },
-    "current": {
       "path": "dist/remark-rehype.esm.js",
       "raw": 14290,
       "gzip9": 4823,
       "brotli11": 4333,
-      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
+      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605",
+      "commit": "81580d7702c9b836c06bba941e9816ea0b887983"
+    },
+    "current": {
+      "path": "dist/remark-rehype.esm.js",
+      "raw": 16701,
+      "gzip9": 5170,
+      "brotli11": 4632,
+      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
     },
     "upstream": {
-      "path": ".page-audit/upstream/official.esm.js",
+      "path": "original.esm.js",
       "raw": 17051,
       "gzip9": 5529,
       "brotli11": 5000,
@@ -73,28 +67,28 @@
   },
   "officialArtifacts": [
     {
-      "path": ".page-audit/upstream/official.terser-nomangle.js",
-      "raw": 25170,
-      "gzip9": 6691,
-      "brotli11": 6068,
-      "sha256": "12d9ecc3293ac1828ef4491a0fafec6ccad95cc3f45cf993ace7377d70d484b0"
-    },
-    {
-      "path": ".page-audit/upstream/official.esm.js",
+      "path": "original.esm.js",
       "raw": 17051,
       "gzip9": 5529,
       "brotli11": 5000,
       "sha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
     },
     {
-      "path": ".page-audit/upstream/official.unminified.js",
-      "raw": 40230,
-      "gzip9": 8984,
-      "brotli11": 8028,
-      "sha256": "d7cb4e3e4f6eb506f93739bb485d139981a0a39526a71646dae695c671ca0971"
+      "path": "original.unminified.js",
+      "raw": 40203,
+      "gzip9": 8978,
+      "brotli11": 8023,
+      "sha256": "0b1396a9a883d2317aff08019cc3d265caafbad2cd77b09518c0f26a4ca42396"
     },
     {
-      "path": ".page-audit/upstream/official.esbuild.js",
+      "path": "original.terser-nomangle.js",
+      "raw": 25170,
+      "gzip9": 6691,
+      "brotli11": 6068,
+      "sha256": "12d9ecc3293ac1828ef4491a0fafec6ccad95cc3f45cf993ace7377d70d484b0"
+    },
+    {
+      "path": "original.esbuild.js",
       "raw": 17638,
       "gzip9": 5921,
       "brotli11": 5386,
@@ -103,139 +97,87 @@
   ],
   "candidateArtifacts": [
     {
+      "path": "dist/remark-rehype.raw.js",
+      "raw": 16612,
+      "gzip9": 5103,
+      "brotli11": 4568,
+      "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
+    },
+    {
       "path": "dist/remark-rehype.closed.js",
-      "raw": 15090,
-      "gzip9": 5063,
-      "brotli11": 4490,
-      "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+      "raw": 18227,
+      "gzip9": 6832,
+      "brotli11": 5885,
+      "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
     },
     {
       "path": "dist/remark-rehype.cjs",
-      "raw": 15546,
-      "gzip9": 5266,
-      "brotli11": 4769,
-      "sha256": "0bb277c4ffcda2e9c9538407ec20d1e478acbd7da81196debb5f832f184150ff"
-    },
-    {
-      "path": "dist/remark-rehype.esm.js",
-      "raw": 14290,
-      "gzip9": 4823,
-      "brotli11": 4333,
-      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
-    },
-    {
-      "path": "dist/remark-rehype.raw.js",
-      "raw": 14201,
-      "gzip9": 4759,
-      "brotli11": 4272,
-      "sha256": "f31cbf139b2fe283936ea94d06b3d93e7108ab83a0631a11098ac9d41c94b505"
+      "raw": 16758,
+      "gzip9": 5211,
+      "brotli11": 4670,
+      "sha256": "f3557ab05e6f8960b359b50d0fee405b4bfcb0e62da78f65a5823f384ec5936b"
     },
     {
       "path": "dist/remark-rehype.umd.js",
-      "raw": 15653,
-      "gzip9": 5302,
-      "brotli11": 4802,
-      "sha256": "000e866dae8d29f28fd7ddc0f2c8556e00249d11e2f9b9b4b305c227c106c688"
+      "raw": 16649,
+      "gzip9": 5169,
+      "brotli11": 4633,
+      "sha256": "88ec523729f2c448d1d36aeae48d6b2622fa0a295947967b68217f3269541e87"
     },
     {
-      "path": ".page-audit/upstream/official.esbuild.js",
-      "raw": 17638,
-      "gzip9": 5921,
-      "brotli11": 5386,
-      "sha256": "3f7ad21a0564c1675cb9e29b7479e3dd8d4d08f8cbdf40001d4dd00c99561988"
-    },
-    {
-      "path": ".page-audit/upstream/official.terser-nomangle.js",
-      "raw": 25170,
-      "gzip9": 6691,
-      "brotli11": 6068,
-      "sha256": "12d9ecc3293ac1828ef4491a0fafec6ccad95cc3f45cf993ace7377d70d484b0"
-    },
-    {
-      "path": ".page-audit/upstream/official.unminified.js",
-      "raw": 40230,
-      "gzip9": 8984,
-      "brotli11": 8028,
-      "sha256": "d7cb4e3e4f6eb506f93739bb485d139981a0a39526a71646dae695c671ca0971"
-    },
-    {
-      "path": ".page-audit/upstream/official.esm.js",
-      "raw": 17051,
-      "gzip9": 5529,
-      "brotli11": 5000,
-      "sha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
+      "path": "dist/remark-rehype.esm.js",
+      "raw": 16701,
+      "gzip9": 5170,
+      "brotli11": 4632,
+      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
     }
   ],
   "timing": {
-    "primaryCompilerSeconds": 18.534783124923706,
-    "primaryScope": "One real compiler process, including code generation and codec-guided search; excludes subsequent package wrapping.",
-    "packageSeconds": 20.832072704999973,
-    "packageScope": "node scripts/build.mjs --compile --force; 2 successful compiler invocations plus package generation.",
-    "upstreamSeconds": 0.173937554,
-    "upstreamScope": "remark-rehype@11.1.2 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
-    "protocol": "Same shared worker for both lanes; one fresh LilScript package build; median of three sequential upstream ESM builds (PlayCanvas records one native reference build). Outside compiler jobs were observed in the pool, so contention is not excluded. Dependencies, tests and compression measurement are outside these build times.",
-    "upstreamSamples": [
-      {
-        "bundleSeconds": 0.011310141999999999,
-        "wallSeconds": 0.191217839
-      },
-      {
-        "bundleSeconds": 0.008284372999999987,
-        "wallSeconds": 0.173937554
-      },
-      {
-        "bundleSeconds": 0.007484216000000004,
-        "wallSeconds": 0.10627025999999995
-      }
-    ]
+    "primaryCompilerSeconds": 0.1972813606262207,
+    "primaryScope": "One compiler process for the shipped ESM (src/entry.lil, lilscript.toml)",
+    "packageSeconds": 0.4147789599956013,
+    "packageScope": "node scripts/build.mjs --compile --force; 2 compiler invocations plus package wrapping",
+    "originalSeconds": 3.0206056739989435,
+    "originalScope": "npm run build"
   },
   "behavior": {
     "command": "npm run test:types && node --test test/*.test.mjs test/official/test.js",
-    "summary": "Repository test command passed (exit 0). # tests 18 \u00b7 # pass 18 \u00b7 # fail 0",
-    "before": {
-      "exitCode": 0,
-      "failures": [],
-      "logSha256": "8a2dbd81f160ece9d583d965a2524d9dc31098ad1e98a676db723df30ed2a194"
-    },
-    "after": {
-      "exitCode": 0,
-      "failures": [],
-      "tail": "\n> @itslil/remark-rehype@11.1.4 test:types\n> tsc --noEmit\n\nTAP version 13\n# Subtest: remark-rehype\n    # Subtest: exports the plugin as default\n    ok 1 - exports the plugin as default\n      ---\n      duration_ms: 0.465175\n      type: 'test'\n      ...\n    # Subtest: exports the mdast-util-to-hast public helpers\n    ok 2 - exports the mdast-util-to-hast public helpers\n      ---\n      duration_ms: 0.56868\n      type: 'test'\n      ...\n    # Subtest: preserves numeric footnote helper arguments like upstream\n    ok 3 - preserves numeric footnote helper arguments like upstream\n      ---\n      duration_ms: 0.245868\n      type: 'test'\n      ...\n    # Subtest: transforms a paragraph fixture into a p element\n    ok 4 - transforms a paragraph fixture into a p element\n      ---\n      duration_ms: 0.577262\n      type: 'test'\n      ...\n    # Subtest: maps unknown value nodes and task lists like upstream\n    ok 5 - maps unknown value nodes and task lists like upstream\n      ---\n      duration_ms: 0.427999\n      type: 'test'\n      ...\n    # Subtest: keeps pinned keys in the library artifact\n    ok 6 - keeps pinned keys in the library artifact\n      ---\n      duration_ms: 0.155822\n      type: 'test'\n      ...\n    1..6\nok 1 - remark-rehype\n  ---\n  duration_ms: 3.142064\n  type: 'suite'\n  ...\n# Subtest: remark-rehype closed\n    # Subtest: ships a closed artifact with the default export\n    ok 1 - ships a closed artifact with the default export\n      ---\n      duration_ms: 1.19816\n      type: 'test'\n      ...\n    1..1\nok 2 - remark-rehype closed\n  ---\n  duration_ms: 1.736564\n  type: 'suite'\n  ...\n# Subtest: remarkRehype\n    # Subtest: should expose the public api\n    ok 1 - should expose the public api\n      ---\n      duration_ms: 0.76978\n      type: 'test'\n      ...\n    # Subtest: should mutate\n    ok 2 - should mutate\n      ---\n      duration_ms: 3.223686\n      type: 'test'\n      ...\n    # Subtest: should mutate w/ options\n    ok 3 - should mutate w/ options\n      ---\n      duration_ms: 0.635149\n      type: 'test'\n      ...\n    # Subtest: should mutate w/ options and explicit unknown 2nd parameter\n    ok 4 - should mutate w/ options and explicit unknown 2nd parameter\n      ---\n      duration_ms: 0.661388\n      type: 'test'\n      ...\n    # Subtest: should mutate with `processor: undefined` and options\n    ok 5 - should mutate with `processor: undefined` and options\n      ---\n      duration_ms: 0.48884\n      type: 'test'\n      ...\n    # Subtest: should bridge\n    ok 6 - should bridge\n      ---\n      duration_ms: 2.13534\n      type: 'test'\n      ...\n    # Subtest: should bridge with options\n    ok 7 - should bridge with options\n      ---\n      duration_ms: 1.058571\n      type: 'test'\n      ...\n    # Subtest: should understand bridge types\n    ok 8 - should understand bridge types\n      ---\n      duration_ms: 0.615059\n      type: 'test'\n      ...\n    # Subtest: should understand mutate types\n    ok 9 - should understand mutate types\n      ---\n      duration_ms: 0.389241\n      type: 'test'\n      ...\n    1..9\nok 3 - remarkRehype\n  ---\n  duration_ms: 11.327494\n  type: 'test'\n  ...\n# Subtest: site\n    # Subtest: has a markedlil-style lab with receipts\n    ok 1 - has a markedlil-style lab with receipts\n      ---\n      duration_ms: 2.81101\n      type: 'test'\n      ...\n    1..1\nok 4 - site\n  ---\n  duration_ms: 3.404145\n  type: 'suite'\n  ...\n1..4\n# tests 18\n# suites 3\n# pass 18\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 95.867113\n",
-      "logSha256": "5621c3c9ed9fb2fb2bd5cf22731c93322201bec599a28b0d6370631a4a4fcdc9"
-    }
+    "summary": "Runtime checks: 23/23 pass.",
+    "exitCode": 0,
+    "logSha256": "72c499d0e836689807ea93aa517372c12c90088852362eeaa6d170aac39c0085"
   },
   "findings": [
-    "Published-to-fresh Brotli drift: -41 bytes (-0.94%). This includes port source/config changes and compiler changes."
+    "Published-to-fresh Brotli drift: +299 bytes (+6.90%). This includes port source/config changes and compiler changes."
   ],
   "primaryArtifact": "dist/remark-rehype.esm.js",
   "beforePage": {
     "url": "https://yeargun.github.io/remark-rehypelil/",
     "status": 200,
-    "sha256": "5cd22d1cf4ed127f6e66108bba8a65559ecad26ccece79b162f5a66b4a856367",
-    "lastModified": "Wed, 02 Sep 2026 15:25:34 GMT"
+    "sha256": "8edf8d4146916cb9514740388fd191df130fcbcb3a72fb5ea5a3e3fdb1c1e639",
+    "lastModified": "Thu, 10 Sep 2026 21:14:00 GMT"
   },
-  "codecSha256": "9257fd055728895c11b9c4b0d882895d7d11bb3dd3495f560123879ca2bc3cd6",
+  "codecSha256": "125776830df72bbaf9704fee3c38bb0bf29bfc6bcceb5bc8707a0507a128d7b9",
   "publicationArtifacts": [
     {
-      "path": "dist/remark-rehype.closed.js",
-      "sha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+      "path": "dist/remark-rehype.cjs",
+      "sha256": "f3557ab05e6f8960b359b50d0fee405b4bfcb0e62da78f65a5823f384ec5936b"
     },
     {
-      "path": "dist/remark-rehype.cjs",
-      "sha256": "0bb277c4ffcda2e9c9538407ec20d1e478acbd7da81196debb5f832f184150ff"
+      "path": "dist/remark-rehype.closed.js",
+      "sha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
     },
     {
       "path": "dist/remark-rehype.esm.js",
-      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
+      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
     },
     {
       "path": "dist/remark-rehype.umd.js",
-      "sha256": "000e866dae8d29f28fd7ddc0f2c8556e00249d11e2f9b9b4b305c227c106c688"
+      "sha256": "88ec523729f2c448d1d36aeae48d6b2622fa0a295947967b68217f3269541e87"
     }
   ],
-  "publicationPolicy": "Promote freshly tested distribution",
-  "publicationBase": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c",
-  "publicationSourceFingerprint": "9b3af4989c876d7f3b8301e0589e61a8e04fa1e154185f73a6572c2acc91b183",
+  "publicationPolicy": "Publish the compiler-written distribution",
+  "publicationBase": "81580d7702c9b836c06bba941e9816ea0b887983",
+  "publicationSourceFingerprint": "37c83abea9aea9bbb16b138414fba124843241a5d876cffa268389f040f7f792",
   "comparisonArtifacts": [
     {
       "path": "site/esm-comparison/original.js",
@@ -243,25 +185,25 @@
     },
     {
       "path": "site/esm-comparison/lilscript.js",
-      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
+      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
     },
     {
       "path": "site/source-build.json",
-      "sha256": "1375440e66adce8ab167041141f0040488d042deb2e3346b3d63e58b117dcbb7"
+      "sha256": "c6aea2b1c1bedfe724bda935cf84f4d24e0ce9a401ebd999fa0c2ef5545e9dcb"
     },
     {
       "path": "site/comparison.json",
-      "sha256": "c8e1e84f6fe16751cfd75ab996c5dfe79c2822c3a21984af05c31293dc55c68b"
+      "sha256": "296ea3dd9f89d7b60c6eb9349d75dbf91b6535d6dd0b53a1ac3811931a70656f"
     }
   ],
   "sourceBuildReceipt": "comparison/source-build/result.json",
   "currentMeasurement": {
     "compiler": {
-      "commit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
-      "sha256": "0616048498eb9eb2e4bd75b39e8e6a083733ada647e16108edfee30ad183beeb"
+      "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
+      "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9"
     },
     "source": {
-      "commit": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c"
+      "commit": "e8690b8 plus the release working tree (committed together with these records)"
     },
     "upstream": {
       "repository": "https://github.com/remarkjs/remark-rehype.git",
@@ -270,6 +212,7 @@
       "version": "11.1.2",
       "directory": "."
     },
-    "compatibility": "Runtime checks: 18/18 pass."
-  }
+    "compatibility": "Runtime checks: 23/23 pass."
+  },
+  "comparisonScope": "remark-rehype@11.1.2 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline Sizes use canonical zlib 1.3.1 gzip-9 and Google Brotli 1.1.0 quality 11."
 }

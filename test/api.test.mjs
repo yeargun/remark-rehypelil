@@ -3,10 +3,13 @@ import { readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, it } from "node:test"
+import { createRequire } from "node:module"
+import { runInNewContext } from "node:vm"
 import {
   defaultFootnoteBackContent as officialFootnoteBackContent,
   defaultFootnoteBackLabel as officialFootnoteBackLabel,
 } from "mdast-util-to-hast"
+import * as library from "../dist/remark-rehype.esm.js"
 import remarkRehype, {
   defaultFootnoteBackContent,
   defaultFootnoteBackLabel,
@@ -122,5 +125,27 @@ describe("remark-rehype", () => {
     assert.match(src, /tagName/)
     assert.match(src, /className/)
     assert.match(src, /type/)
+  })
+})
+
+describe("remark-rehype CommonJS and browser builds", () => {
+  const expected = JSON.stringify(remarkRehype.call({})(paragraph))
+  const exported = Object.keys(library).sort()
+
+  it("require() returns the ESM's exports, transforming alike", () => {
+    const cjs = createRequire(import.meta.url)("../dist/remark-rehype.cjs")
+    assert.deepEqual(Object.keys(cjs).sort(), exported)
+    assert.equal(cjs.__esModule, true)
+    assert.equal(JSON.stringify(cjs.default.call({})(paragraph)), expected)
+    assert.equal(cjs.defaultFootnoteBackLabel(0, 2), defaultFootnoteBackLabel(0, 2))
+    assert.deepEqual(Object.keys(cjs.defaultHandlers).sort(), Object.keys(defaultHandlers).sort())
+  })
+
+  it("the browser script sets the global remarkRehype and nothing else", () => {
+    const sandbox = {}
+    sandbox.globalThis = sandbox
+    runInNewContext(readFileSync(resolve(root, "dist/remark-rehype.umd.js"), "utf8"), sandbox)
+    assert.deepEqual(Object.keys(sandbox).filter((key) => key !== "globalThis"), ["remarkRehype"])
+    assert.equal(JSON.stringify(sandbox.remarkRehype.call({})(paragraph)), expected)
   })
 })

@@ -85,9 +85,11 @@ function renderHero() {
   document.querySelector("#hero-shipped").textContent = smaller.text
   document.querySelector("#hero-gzip").textContent = smallerThan(itslil.gzip9, baseline.gzip9).text
   document.querySelector("#hero-raw").textContent = smallerThan(itslil.raw, baseline.raw).text
-  document.querySelector("#hero-spec").textContent = data.spec
-    ? `${data.spec.pass}/${data.spec.total}`
+  const spec = data.spec
+    ? `${formatter.format(data.spec.pass)}/${formatter.format(data.spec.total)}`
     : "—"
+  document.querySelector("#hero-spec").textContent = spec
+  for (const node of document.querySelectorAll("[data-spec]")) node.textContent = spec
 }
 
 function renderSize() {
@@ -142,8 +144,94 @@ function renderPerf() {
       return `<tr><th scope="row">${row.name}</th><td>${ms(row.documentMs)}</td><td class="verdict ${verdict ? verdict.state : ""}"><strong>${verdict ? verdict.text : "—"}</strong></td></tr>`
     })
     .join("")
+  const workload = data.throughputDocument ? ` Document: ${data.throughputDocument}.` : ""
   document.querySelector("#perf-note").textContent =
-    `${data.runtime ?? "Node"}. ${data.codec}. Quiet median after discarding the first ${data.warmupDiscard ?? 3} samples.`
+    `${data.runtime ?? "Node"}. ${data.codec}. Median after discarding the first ${data.warmupDiscard ?? 3} samples.${workload}`
+}
+
+function median(values) {
+  const sorted = [...values].filter(Number.isFinite).sort((left, right) => left - right)
+  return sorted.length ? sorted[Math.floor(sorted.length / 2)] : null
+}
+
+function seconds(valueMs) {
+  return valueMs == null ? "—" : `${(valueMs / 1000).toFixed(2)} s`
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character])
+}
+
+function renderCompiler() {
+  const compiler = data.compiler
+  const cards = document.querySelector("#compiler-cards")
+  if (!compiler || !cards) return
+  const previous = data.previousRelease?.files ?? {}
+  const shipped = laneById("itslil")
+  const before = previous[`dist/${data.file}.esm.js`]
+  const change = shipped && before ? smallerThan(shipped.brotli11, before.brotli11) : null
+  const compileSamples = compiler.compileWallMs ?? []
+  const buildSamples = compiler.buildCompileWallMs ?? []
+  const invocations = compiler.invocations?.length ?? 0
+  cards.innerHTML = [
+    {
+      value: seconds(median(compileSamples)),
+      label: `compile wall time, shipped ESM · median of ${compileSamples.length}${data.previousRelease?.compileWallMs ? ` · previous release ${seconds(median(data.previousRelease.compileWallMs))}` : ""}`,
+      win: true,
+    },
+    {
+      value: seconds(median(buildSamples)),
+      label: `all ${invocations} compiles of a clean build · median of ${buildSamples.length}`,
+    },
+    {
+      value: change ? change.text : "—",
+      win: change?.state === "win",
+      label: before && shipped
+        ? `Brotli vs previous release · ${formatter.format(before.brotli11)} → ${formatter.format(shipped.brotli11)} B`
+        : "Brotli vs previous release",
+    },
+    {
+      value: escapeHtml(compiler.revision),
+      label: "compiler source revision",
+      geo: true,
+    },
+  ]
+    .map(
+      (card) =>
+        `<article class="perf-card${card.win ? " win" : ""}${card.geo ? " geo" : ""}"><strong>${card.value}</strong><span>${card.label}</span></article>`,
+    )
+    .join("")
+  document.querySelector("#delivered-body").innerHTML = (data.delivered ?? [])
+    .map((file) => {
+      const old = previous[file.path]
+      const verdict = old ? smallerThan(file.brotli11, old.brotli11) : null
+      const writer = file.wrapper && file.wrapper !== "none" ? `${file.writtenBy} + ${file.wrapper}` : file.writtenBy
+      return `<tr><th scope="row"><code>${escapeHtml(file.path)}</code></th><td>${escapeHtml(file.condition)}</td><td>${escapeHtml(writer)}</td><td>${formatter.format(file.raw)}</td><td>${formatter.format(file.gzip9)}</td><td>${formatter.format(file.brotli11)}</td><td class="verdict ${verdict ? verdict.state : ""}"><strong>${verdict ? `${verdict.text} (${formatter.format(old.brotli11)})` : "—"}</strong></td></tr>`
+    })
+    .join("")
+  const samples = compileSamples.map((value) => `${value} ms`).join(" / ")
+  const priorCompile = data.previousRelease?.compileWallMs
+    ? ` Its shipped-ESM compile took ${data.previousRelease.compileWallMs.map((value) => `${value} ms`).join(" / ")} on ${data.previousRelease.compileHost}.`
+    : ""
+  const prior = data.previousRelease
+    ? ` Previous release: ${data.previousRelease.commit} (${data.previousRelease.date}), ${data.previousRelease.compiler}. ${data.previousRelease.note}${priorCompile} Measured with ${data.previousRelease.measuredWith}.`
+    : ""
+  const host = compiler.host
+    ? ` Host: ${compiler.host}${compiler.loadAverage ? `, 1-minute load average ${compiler.loadAverage.start[0]} before and ${compiler.loadAverage.end[0]} after the builds` : ""}.`
+    : ""
+  document.querySelector("#compiler-note").textContent =
+    `Compiler ${compiler.revision}, binary SHA-256 ${compiler.binarySha256}, codec SHA-256 ${compiler.codecSha256}, recorded ${compiler.date}. Shipped-ESM compile samples: ${samples}.${host}${prior}`
+}
+
+function renderBarsNote() {
+  const node = document.querySelector("#bars-note")
+  if (node && data.barsNote) node.textContent = data.barsNote
 }
 
 function bindCopy() {
@@ -310,7 +398,12 @@ function runOfficial(src) {
   }
   if (kind === "md-html") return officialApi(src)
   if (kind === "md-json") return JSON.stringify(officialApi(src), null, 2)
-  if (kind === "json-json") return JSON.stringify(officialApi(JSON.parse(src)), null, 2)
+  if (kind === "json-json") {
+    const tree = JSON.parse(src)
+    // remark-rehype is a plugin: calling it returns the transformer, as on the LilScript lane.
+    if (data.file === "remark-rehype") return JSON.stringify(officialApi.call({})(tree), null, 2)
+    return JSON.stringify(officialApi(tree), null, 2)
+  }
   if (kind === "json-html") return officialApi(JSON.parse(src))
   if (kind === "md-md") return String(officialApi().processSync(src))
   if (kind === "html-html") return String(officialApi().processSync(src))
@@ -393,6 +486,8 @@ function bindPlayground() {
 renderHero()
 renderPerf()
 renderSize()
+renderCompiler()
+renderBarsNote()
 bindCopy()
 bindProgress()
 bindPlayground()

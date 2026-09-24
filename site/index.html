@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="@itslil/remark-rehype is remark-rehype@11.1.2 rewritten in LilScript. Size is versus the official runtime graph minified by Terser and esbuild." />
+    <meta name="description" content="@itslil/remark-rehype is remark-rehype@11.1.2 rewritten in LilScript. Size is versus the official runtime graph minified by Terser, Oxc and esbuild, with compile time on the page." />
     <meta name="theme-color" content="#c9a227" />
     <title>itslil/remark-rehype — remark-rehype@11.1.2 through LilScript</title>
     
@@ -22,6 +22,7 @@
         <a href="#performance">performance</a>
         <a href="#lab">playground</a>
         <a href="#evidence">size</a>
+        <a href="#compiler">compiler</a>
         <a href="https://github.com/yeargun/remark-rehypelil">GitHub ↗</a>
       </nav>
     </header>
@@ -30,7 +31,7 @@
         <div class="hero-copy">
           <p class="eyebrow"><span class="live-dot"></span> remark-rehype@11.1.2 · LilScript port · @itslil/remark-rehype</p>
           <h1>mdast,<br /><em>through rehype</em></h1>
-          <p class="lede">Official <code>remark-rehype@11.1.2</code> algorithms rewritten in LilScript. Runtime checks: 18/18 pass. Not affiliated with upstream. Official rows are the published plugin plus mdast-util-to-hast, then Terser and esbuild.</p>
+          <p class="lede">Official <code>remark-rehype@11.1.2</code> algorithms rewritten in LilScript. Upstream-derived and package tests <span data-spec>19/19</span>. Not affiliated with upstream. Official rows are the published plugin plus mdast-util-to-hast, then Terser, Oxc and esbuild.</p>
           <div class="install-row">
             <code>npm install @itslil/remark-rehype</code>
             <button class="copy" data-copy="npm install @itslil/remark-rehype" type="button">copy</button>
@@ -50,11 +51,12 @@
             <div><strong id="hero-shipped">—</strong><span>Brotli-11 you ship, vs Terser</span></div>
             <div><strong id="hero-gzip">—</strong><span>gzip-9 vs Terser</span></div>
             <div><strong id="hero-raw">—</strong><span>raw vs Terser</span></div>
-            <div><strong id="hero-spec">—</strong><span>repository checks</span></div>
+            <div><strong id="hero-spec">—</strong><span>upstream and package tests</span></div>
           </div>
           <p class="score-note">
-            Official rows are one esbuild bundle of <code>remark-rehype@11.1.2</code> plus the packages it needs at runtime, then Terser or esbuild.
-            LilScript is not post-minified. The measured ESM is the Brotli-scored compile. Closed LilScript is the same source with <code>extern_fields = false</code>. Runtime checks: 18/18 pass.</p>
+            The bar is one esbuild bundle of <code>remark-rehype@11.1.2</code> plus the packages it needs at runtime, then Terser, the strongest of Terser, Oxc and esbuild on every codec.
+            The npm file is the compiler's own output with a license banner; no minifier runs after it.
+          </p>
         </div>
       </section>
       <section class="ticker" aria-label="Supported features">
@@ -67,8 +69,8 @@
             <h2>Same work,<br />two runtimes.</h2>
           </div>
           <p>
-            Not Playwright — Node v22.21.1 on this machine, quiet median after warmup.
-            Race 10× in the playground for a browser number. Runtime checks: 18/18 pass.
+            Not Playwright — Node on the build host, median of alternating runs after warmup, mdast-util-to-hast's readme as one mdast tree.
+            Race 10× in the playground for a browser number. The upstream-derived and package suites (<span data-spec>19/19</span>) are green before any size row is a claim.
           </p>
         </div>
         <div class="perf-cards" id="perf-cards"></div>
@@ -127,8 +129,8 @@
               <h2>Raw, gzip,<br />and Brotli.</h2>
             </div>
             <p>
-              Official remark-rehype@11.1.2 bundled with its runtime graph, then Terser (mangle on/off) and esbuild minify.
-              LilScript is not post-minified. Closed LilScript is Brotli with <code>extern_fields = false</code>.
+              Official remark-rehype@11.1.2 bundled with its runtime graph, then Terser (mangle on/off), Oxc (mangle on/off) and esbuild minify; one more row builds the same package from its pinned Git source.
+              The LilScript npm file is what the compiler wrote, with a license banner and nothing run over it. Closed LilScript is the same source under <code>lilscript.closed.toml</code>.
             </p>
           </div>
           <div class="codec-block">
@@ -178,11 +180,32 @@
             <p>
               <strong>Why this surface.</strong> Comparing against a single published file would hide official dependencies.
               The fair fight is the runtime graph you actually import, then the same minifiers the JS ecosystem ships.
-              Closed LilScript is the other honest comparison: no JavaScript options object, so those property names mangle.
+              Every LilScript row is a file the compiler wrote; no minifier runs after it. This compiler renames no properties, so the closed lane differs from the npm file only in its optimizer settings (a lower effort level, no candidate search); it is diagnostic.
+              <span id="bars-note"></span>
             </p>
             <a href="https://github.com/yeargun/remark-rehypelil">README ↗</a>
           </div>
         </div>
+      </section>
+      <section class="compiler shell" id="compiler">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">One compiler, pinned</p>
+            <h2>Compile<br />time.</h2>
+          </div>
+          <p>
+            Every file the package delivers is the compiler's own output. The build adds a license banner and, for CommonJS and the browser script, a module wrapper; no minifier runs after the compiler.
+            Wall time is the compiler process on the build host, over three clean builds.
+          </p>
+        </div>
+        <div class="perf-cards" id="compiler-cards"></div>
+        <div class="table-wrap light">
+          <table>
+            <thead><tr><th>Delivered file</th><th>Loaded by</th><th>Written by</th><th>Raw</th><th>gzip-9</th><th>Brotli-11</th><th>Brotli vs previous release</th></tr></thead>
+            <tbody id="delivered-body"></tbody>
+          </table>
+        </div>
+        <p class="perf-note" id="compiler-note"></p>
       </section>
       <section class="closing shell">
         <p class="eyebrow">Zero runtime dependencies</p>
@@ -195,7 +218,7 @@
     </main>
     <footer class="shell">
       <span>@itslil/remark-rehype · MIT</span>
-      <span>official remark-rehype@11.1.2 algorithms rewritten in LilScript — repository checks 18/18 — not affiliated with upstream</span>
+      <span>official remark-rehype@11.1.2 algorithms rewritten in LilScript — upstream-derived and package tests <span data-spec>19/19</span> — not affiliated with upstream</span>
       <a href="https://github.com/yeargun/remark-rehypelil">source ↗</a>
     </footer>
   </body>

@@ -161,6 +161,12 @@ tbody td:last-child strong { color: var(--acid); }
 .method-note a { color: var(--acid); font: 500 11px "DM Mono", monospace; white-space: nowrap; }
 .perf-note { margin-top: 22px; color: var(--muted); font: 500 12px/1.6 "DM Mono", monospace; }
 
+.compiler { padding-block: 120px 40px; }
+.compiler .perf-card strong { overflow-wrap: anywhere; }
+.compiler td:nth-child(3) { white-space: normal; min-width: 220px; text-align: left; color: var(--muted); }
+.compiler tbody th code { font: 500 12px "DM Mono", monospace; }
+.compiler .perf-note { overflow-wrap: anywhere; }
+
 .closing { padding-block: 130px; text-align: center; }
 .closing h2 { font-size: clamp(60px, 8.5vw, 112px); }
 .install-row.large { margin: 48px auto 0; text-align: left; }
@@ -188,7 +194,7 @@ footer.shell { display: flex; justify-content: space-between; gap: 20px; padding
   h1 { font-size: clamp(62px, 22vw, 92px); }
   .score-main { padding: 27px; }
   .score-grid strong { font-size: 23px; }
-  .lab, .evidence, .performance { padding-block: 82px; }
+  .lab, .evidence, .performance, .compiler { padding-block: 82px; }
   .section-heading { margin-bottom: 38px; }
   .method-note { grid-template-columns: 1fr; }
   footer.shell { flex-direction: column; }

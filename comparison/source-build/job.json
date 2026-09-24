@@ -7,9 +7,9 @@
     "directory": "."
   },
   "portSource": {
-    "commit": "dccf1c2b3c900efa91d9021d7ee76a6748bf312c"
+    "commit": "e8690b8 plus the release working tree (committed together with these records)"
   },
-  "compilerCommit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
+  "compilerCommit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
   "install": [
     "npm",
     "install",

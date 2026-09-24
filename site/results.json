@@ -4,15 +4,23 @@
   "file": "remark-rehype",
   "lilExport": "default",
   "officialExport": "default",
-  "node": "v22.21.1",
+  "node": "v24.11.1",
   "codec": "lilscript-codec gzip-9 / brotli-11",
-  "runtime": "Node v22.21.1",
-  "warmupDiscard": 3,
-  "comparison": "Official rows are an esbuild bundle of remark-rehype@11.1.2 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
+  "runtime": "Node v24.11.1",
+  "warmupDiscard": 10,
+  "comparison": "Official rows are an esbuild bundle of remark-rehype@11.1.2 plus its runtime dependencies, then Terser, Oxc or esbuild; one row is the same package built from its pinned Git source. LilScript rows are files the compiler wrote, with no minifier after it. Closed is the same source under lilscript.closed.toml, diagnostic only.",
   "spec": {
-    "total": 18,
-    "pass": 18,
-    "label": "runtime checks"
+    "total": 19,
+    "pass": 19,
+    "label": "upstream and package suites",
+    "official": {
+      "total": 10,
+      "pass": 10
+    },
+    "checks": {
+      "total": 9,
+      "pass": 9
+    }
   },
   "play": {
     "kind": "json-json",
@@ -22,78 +30,226 @@
     {
       "id": "official",
       "name": "Official remark-rehype@11.1.2 graph",
-      "raw": 40203,
-      "gzip9": 8978,
-      "brotli11": 8023,
-      "note": "esbuild bundle of the published package plus runtime deps",
-      "diagnostic": false,
-      "measuredAt": "2026-09-10T20:41:22Z",
-      "artifactSha256": "0b1396a9a883d2317aff08019cc3d265caafbad2cd77b09518c0f26a4ca42396"
+      "raw": 39783,
+      "gzip9": 8849,
+      "brotli11": 7919,
+      "note": "esbuild bundle of the published package plus its runtime dependencies (site/official.js, the playground lane), unminified",
+      "measuredAt": "2026-09-24T06:20:00Z",
+      "artifactSha256": "3813e736e9febb3c24f541f7921b8339504272abf8d4432f16d96c022e477feb",
+      "diagnostic": false
     },
     {
       "id": "official-terser-mangle",
-      "name": "Official \u00b7 Terser mangle on",
-      "raw": 17051,
-      "gzip9": 5529,
-      "brotli11": 5000,
-      "note": "Terser compress of that graph, mangle: true",
-      "baseline": true,
-      "measuredAt": "2026-09-10T20:41:22Z",
-      "artifactSha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
+      "name": "Official · Terser mangle on",
+      "raw": 16855,
+      "gzip9": 5443,
+      "brotli11": 4908,
+      "note": "Terser 5.51.2 of that graph, module, compress passes 3, mangle: true. The strongest bar on every codec",
+      "measuredAt": "2026-09-24T06:20:00Z",
+      "artifactSha256": "52b03b35b329700b69a2a91c658651d57bbae4b7f72ca1edd9a37c2f01270956",
+      "baseline": true
     },
     {
       "id": "official-terser-nomangle",
-      "name": "Official \u00b7 Terser mangle off",
-      "raw": 25170,
-      "gzip9": 6691,
-      "brotli11": 6068,
-      "note": "Terser compress of that graph, mangle: false",
-      "measuredAt": "2026-09-10T20:41:22Z",
-      "artifactSha256": "12d9ecc3293ac1828ef4491a0fafec6ccad95cc3f45cf993ace7377d70d484b0"
+      "name": "Official · Terser mangle off",
+      "raw": 24918,
+      "gzip9": 6585,
+      "brotli11": 5973,
+      "note": "Terser 5.51.2 of that graph, module, compress passes 3, mangle: false",
+      "measuredAt": "2026-09-24T06:20:00Z",
+      "artifactSha256": "9dcf527b36583ee2e27bbda7480ec0bb050f1798659eea8adb9cff98fa5055a4"
+    },
+    {
+      "id": "official-oxc-mangle",
+      "name": "Official · Oxc mangle on",
+      "raw": 16875,
+      "gzip9": 5563,
+      "brotli11": 5056,
+      "note": "Oxc minify (Vite 8.2.1) of that graph, mangle: true",
+      "measuredAt": "2026-09-24T06:20:00Z",
+      "artifactSha256": "cf92cf4fc99f4142630c4004254d3e89446e2198abdc62cb3830f9e7844c2ab3"
+    },
+    {
+      "id": "official-oxc-nomangle",
+      "name": "Official · Oxc mangle off",
+      "raw": 25338,
+      "gzip9": 6814,
+      "brotli11": 6160,
+      "note": "Oxc minify (Vite 8.2.1) of that graph, mangle: false",
+      "measuredAt": "2026-09-24T06:20:00Z",
+      "artifactSha256": "e3e776fb7e8abc36253c39b5017708972ca8fde8405aa214dae24e77abe44cce"
     },
     {
       "id": "official-esbuild",
-      "name": "Official \u00b7 esbuild minify",
-      "raw": 17638,
-      "gzip9": 5921,
-      "brotli11": 5386,
-      "note": "esbuild minify of that graph",
-      "measuredAt": "2026-09-10T20:41:22Z",
-      "artifactSha256": "3f7ad21a0564c1675cb9e29b7479e3dd8d4d08f8cbdf40001d4dd00c99561988"
+      "name": "Official · esbuild minify",
+      "raw": 17438,
+      "gzip9": 5824,
+      "brotli11": 5287,
+      "note": "esbuild 0.28.1 minify of that graph",
+      "measuredAt": "2026-09-24T06:20:00Z",
+      "artifactSha256": "08c3efa53112316c0a62d131091e299b7a677db2d4a06ad1038cc8250cd97161"
+    },
+    {
+      "id": "official-source-terser",
+      "name": "Official · Git source + Terser",
+      "raw": 17051,
+      "gzip9": 5529,
+      "brotli11": 5000,
+      "note": "The same package built from its pinned Git revision (b5a2e5b), bundled, then Terser 5.51.2 mangle on; the ESM of the source-build record (reproduced byte for byte from the 2026-09-10 record)",
+      "measuredAt": "2026-09-24T06:17:03Z",
+      "artifactSha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
     },
     {
       "id": "itslil",
-      "name": "@itslil/remark-rehype \u00b7 library",
-      "raw": 14290,
-      "gzip9": 4823,
-      "brotli11": 4333,
-      "note": "ESM output from LilScript 4dc4e33.",
+      "name": "@itslil/remark-rehype · library",
+      "raw": 16701,
+      "gzip9": 5170,
+      "brotli11": 4632,
+      "note": "The npm ESM: LilScript aa2052f0 output with a license banner.",
       "primary": true,
-      "measuredAt": "2026-09-10T20:41:22Z",
-      "artifactSha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605"
+      "measuredAt": "2026-09-24T06:16:25Z",
+      "artifactSha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
     },
     {
       "id": "itslil-closed",
-      "name": "@itslil/remark-rehype \u00b7 closed",
-      "raw": 15090,
-      "gzip9": 5063,
-      "brotli11": 4490,
-      "note": "ESM output from LilScript 4dc4e33.",
-      "measuredAt": "2026-09-10T20:41:22Z",
-      "artifactSha256": "8519ba7d9910b3904d09be43b3fd502148ee1a588e1be44b2883ae13b451f503"
+      "name": "@itslil/remark-rehype · closed",
+      "raw": 18227,
+      "gzip9": 6832,
+      "brotli11": 5885,
+      "note": "LilScript aa2052f0 under lilscript.closed.toml (level 12, no candidate search); diagnostic only.",
+      "measuredAt": "2026-09-24T06:16:25Z",
+      "artifactSha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
     }
   ],
   "throughput": [
     {
       "id": "official",
       "name": "remark-rehype@11.1.2",
-      "documentMs": 0.24295800000072632
+      "documentMs": 2.517
     },
     {
       "id": "itslil",
       "name": "@itslil/remark-rehype",
-      "documentMs": 0.03254099999958271
+      "documentMs": 0.625
     }
   ],
-  "sizeMeasuredAt": "2026-09-10T20:41:22Z"
+  "sizeMeasuredAt": "2026-09-24T06:16:25Z",
+  "barsNote": "The earlier releases showed Terser bars of 4,910 (npm graph) and 5,000 (the Git-source build of 2026-09-10). Re-measured on 2026-09-24: Terser 5.43.1 reproduces 4,910 byte for byte, Terser 5.51.2, the bar shown, gives 4,908, and the Git-source build reproduces 5,000 byte for byte.",
+  "previousRelease": {
+    "compiler": "the deleted old route (lilscript 4dc4e33)",
+    "note": "Its CommonJS and browser files were esbuild reprints of the ESM.",
+    "measuredWith": "the same lilscript-codec",
+    "commit": "81580d7",
+    "date": "2026-09-10",
+    "files": {
+      "dist/remark-rehype.esm.js": {
+        "raw": 14290,
+        "gzip9": 4823,
+        "brotli11": 4333
+      },
+      "dist/remark-rehype.cjs": {
+        "raw": 15546,
+        "gzip9": 5266,
+        "brotli11": 4769
+      },
+      "dist/remark-rehype.umd.js": {
+        "raw": 15653,
+        "gzip9": 5302,
+        "brotli11": 4802
+      },
+      "dist/remark-rehype.closed.js": {
+        "raw": 15090,
+        "gzip9": 5063,
+        "brotli11": 4490
+      }
+    },
+    "compileWallMs": [
+      18781.0,
+      18792.0,
+      18804.0
+    ],
+    "compileHost": "Azure Standard_D16als_v7, 16 vCPUs (the 2026-09-10 source-build record)"
+  },
+  "delivered": [
+    {
+      "path": "dist/remark-rehype.esm.js",
+      "condition": "import",
+      "writtenBy": "compiler",
+      "wrapper": "license banner",
+      "raw": 16701,
+      "gzip9": 5170,
+      "brotli11": 4632
+    },
+    {
+      "path": "dist/remark-rehype.cjs",
+      "condition": "require",
+      "writtenBy": "compiler",
+      "wrapper": "license banner, CommonJS export object",
+      "raw": 16758,
+      "gzip9": 5211,
+      "brotli11": 4670
+    },
+    {
+      "path": "dist/remark-rehype.umd.js",
+      "condition": "browser script (unpkg, jsdelivr)",
+      "writtenBy": "compiler",
+      "wrapper": "license banner, function scope, global remarkRehype",
+      "raw": 16649,
+      "gzip9": 5169,
+      "brotli11": 4633
+    },
+    {
+      "path": "dist/remark-rehype.closed.js",
+      "condition": "./closed",
+      "writtenBy": "compiler",
+      "wrapper": "none",
+      "raw": 18227,
+      "gzip9": 6832,
+      "brotli11": 5885
+    }
+  ],
+  "throughputDocument": "mdast-util-to-hast's readme.md (38251 characters, CommonMark) as one mdast tree, 200 alternating runs",
+  "compiler": {
+    "revision": "aa2052f0",
+    "binarySha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9",
+    "codecSha256": "125776830df72bbaf9704fee3c38bb0bf29bfc6bcceb5bc8707a0507a128d7b9",
+    "compileWallMs": [
+      201.6,
+      199.4,
+      199.8
+    ],
+    "buildCompileWallMs": [
+      261.6,
+      265.7,
+      260
+    ],
+    "invocations": [
+      {
+        "source": "src/entry.lil",
+        "config": "lilscript.toml",
+        "output": "remark-rehype.raw.js"
+      },
+      {
+        "source": "src/entry.lil",
+        "config": "lilscript.closed.toml",
+        "output": "remark-rehype.closed.js"
+      }
+    ],
+    "compileScope": "wall time of the compiler process for src/entry.lil with lilscript.toml, the shipped ESM",
+    "buildScope": "wall time of all 2 compiler processes of one clean build",
+    "host": "Azure Standard_B8als_v2, 8 vCPUs, Node v24.11.1",
+    "loadAverage": {
+      "start": [
+        5.4,
+        12.01,
+        14.28
+      ],
+      "end": [
+        5.4,
+        12.01,
+        14.28
+      ]
+    },
+    "date": "2026-09-24"
+  }
 }
