@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "name": "remark-rehypelil",
-  "measuredAt": "2026-09-24T06:17:03Z",
+  "measuredAt": "2026-09-27T14:52:42Z",
   "status": "published",
   "buildPassed": true,
   "summary": "Rebuilt by the one LilScript compiler; every delivered file is compiler-written (a license banner and module wrappers are the only bytes the build adds).",
-  "sourceCommit": "e8690b8 plus the release working tree (committed together with these records)",
-  "previousPublicCommit": "81580d7702c9b836c06bba941e9816ea0b887983",
+  "sourceCommit": "5b5fde05b47b89350a0a203954de46f283a75709",
+  "previousPublicCommit": "b5ae9f79546d0bfccfc61a89e0c1aafe355ab18b",
   "compiler": {
-    "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
-    "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9",
+    "commit": "249686599dc3bf1b6bf70dc9a030081b755bbb24",
+    "sha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041",
     "profile": "release",
     "dirty": false
   },
@@ -24,14 +24,14 @@
     "node": "v24.11.1",
     "rayonThreads": 8,
     "loadAtStart": [
-      4.796875,
-      11.66455078125,
-      14.1416015625
+      10.3251953125,
+      6.2890625,
+      5.8291015625
     ],
     "loadAtEnd": [
-      4.26123046875,
-      10.8818359375,
-      13.8017578125
+      14.81103515625,
+      7.7353515625,
+      6.32421875
     ]
   },
   "upstream": {
@@ -44,18 +44,18 @@
   "sizes": {
     "previous": {
       "path": "dist/remark-rehype.esm.js",
-      "raw": 14290,
-      "gzip9": 4823,
-      "brotli11": 4333,
-      "sha256": "a722e604454bbb70a6aa6e5b720039de4a32c724af174a53d89f320db2b3d605",
-      "commit": "81580d7702c9b836c06bba941e9816ea0b887983"
-    },
-    "current": {
-      "path": "dist/remark-rehype.esm.js",
       "raw": 16701,
       "gzip9": 5170,
       "brotli11": 4632,
-      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
+      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077",
+      "commit": "b5ae9f79546d0bfccfc61a89e0c1aafe355ab18b"
+    },
+    "current": {
+      "path": "dist/remark-rehype.esm.js",
+      "raw": 16264,
+      "gzip9": 5152,
+      "brotli11": 4610,
+      "sha256": "a843f88ce4d65912dc6bf56bae3832992b96bc26fa0eb647b89135bb5c02fad3"
     },
     "upstream": {
       "path": "original.esm.js",
@@ -98,10 +98,10 @@
   "candidateArtifacts": [
     {
       "path": "dist/remark-rehype.raw.js",
-      "raw": 16612,
-      "gzip9": 5103,
-      "brotli11": 4568,
-      "sha256": "c1fe51dc475a92babca3b829e3b3ff77c8937f5862787f40c8a3e978a99a38cf"
+      "raw": 16175,
+      "gzip9": 5087,
+      "brotli11": 4551,
+      "sha256": "40e271a8a07581afe0eacd751ef2aca39b48d03138583db836091b56ac8b8957"
     },
     {
       "path": "dist/remark-rehype.closed.js",
@@ -112,55 +112,55 @@
     },
     {
       "path": "dist/remark-rehype.cjs",
-      "raw": 16758,
-      "gzip9": 5211,
-      "brotli11": 4670,
-      "sha256": "f3557ab05e6f8960b359b50d0fee405b4bfcb0e62da78f65a5823f384ec5936b"
+      "raw": 16321,
+      "gzip9": 5191,
+      "brotli11": 4638,
+      "sha256": "ce5b7d3b6de1a25048d473fb8e08f5139981b5c0b4b072f5fa593dd2d385968b"
     },
     {
       "path": "dist/remark-rehype.umd.js",
-      "raw": 16649,
-      "gzip9": 5169,
-      "brotli11": 4633,
-      "sha256": "88ec523729f2c448d1d36aeae48d6b2622fa0a295947967b68217f3269541e87"
+      "raw": 16212,
+      "gzip9": 5149,
+      "brotli11": 4632,
+      "sha256": "6a2af7a94d52ec00f9a5e12f987de2e4f829a782d3a3fd6cf0c4dd66003d840a"
     },
     {
       "path": "dist/remark-rehype.esm.js",
-      "raw": 16701,
-      "gzip9": 5170,
-      "brotli11": 4632,
-      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
+      "raw": 16264,
+      "gzip9": 5152,
+      "brotli11": 4610,
+      "sha256": "a843f88ce4d65912dc6bf56bae3832992b96bc26fa0eb647b89135bb5c02fad3"
     }
   ],
   "timing": {
-    "primaryCompilerSeconds": 0.1972813606262207,
+    "primaryCompilerSeconds": 0.7869718074798584,
     "primaryScope": "One compiler process for the shipped ESM (src/entry.lil, lilscript.toml)",
-    "packageSeconds": 0.4147789599956013,
+    "packageSeconds": 1.1212293859571218,
     "packageScope": "node scripts/build.mjs --compile --force; 2 compiler invocations plus package wrapping",
-    "originalSeconds": 3.0206056739989435,
+    "originalSeconds": 6.571992606972344,
     "originalScope": "npm run build"
   },
   "behavior": {
     "command": "npm run test:types && node --test test/*.test.mjs test/official/test.js",
     "summary": "Runtime checks: 23/23 pass.",
     "exitCode": 0,
-    "logSha256": "72c499d0e836689807ea93aa517372c12c90088852362eeaa6d170aac39c0085"
+    "logSha256": "b7b824fa3c24694c3d2513c643df830f62065366ab8964969283fa76a367ab9d"
   },
   "findings": [
-    "Published-to-fresh Brotli drift: +299 bytes (+6.90%). This includes port source/config changes and compiler changes."
+    "Published-to-fresh Brotli drift: -22 bytes (-0.47%). This includes port source/config changes and compiler changes."
   ],
   "primaryArtifact": "dist/remark-rehype.esm.js",
   "beforePage": {
     "url": "https://yeargun.github.io/remark-rehypelil/",
     "status": 200,
-    "sha256": "8edf8d4146916cb9514740388fd191df130fcbcb3a72fb5ea5a3e3fdb1c1e639",
-    "lastModified": "Thu, 10 Sep 2026 21:14:00 GMT"
+    "sha256": "4dd8ea09895777d2586f24bc6a07769941f47d97b4e83fa8f925a829e1a807e1",
+    "lastModified": "Thu, 24 Sep 2026 06:20:17 GMT"
   },
-  "codecSha256": "125776830df72bbaf9704fee3c38bb0bf29bfc6bcceb5bc8707a0507a128d7b9",
+  "codecSha256": "85329d361ef3339d4ff7b7ca1f00065d561340eb4fc98a2799af327134a3a3f0",
   "publicationArtifacts": [
     {
       "path": "dist/remark-rehype.cjs",
-      "sha256": "f3557ab05e6f8960b359b50d0fee405b4bfcb0e62da78f65a5823f384ec5936b"
+      "sha256": "ce5b7d3b6de1a25048d473fb8e08f5139981b5c0b4b072f5fa593dd2d385968b"
     },
     {
       "path": "dist/remark-rehype.closed.js",
@@ -168,15 +168,15 @@
     },
     {
       "path": "dist/remark-rehype.esm.js",
-      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
+      "sha256": "a843f88ce4d65912dc6bf56bae3832992b96bc26fa0eb647b89135bb5c02fad3"
     },
     {
       "path": "dist/remark-rehype.umd.js",
-      "sha256": "88ec523729f2c448d1d36aeae48d6b2622fa0a295947967b68217f3269541e87"
+      "sha256": "6a2af7a94d52ec00f9a5e12f987de2e4f829a782d3a3fd6cf0c4dd66003d840a"
     }
   ],
   "publicationPolicy": "Publish the compiler-written distribution",
-  "publicationBase": "81580d7702c9b836c06bba941e9816ea0b887983",
+  "publicationBase": "b5ae9f79546d0bfccfc61a89e0c1aafe355ab18b",
   "publicationSourceFingerprint": "37c83abea9aea9bbb16b138414fba124843241a5d876cffa268389f040f7f792",
   "comparisonArtifacts": [
     {
@@ -185,25 +185,25 @@
     },
     {
       "path": "site/esm-comparison/lilscript.js",
-      "sha256": "703c37732948d8304aeb09c1caab91c54e67a80a00f094b4ac847a2697958077"
+      "sha256": "a843f88ce4d65912dc6bf56bae3832992b96bc26fa0eb647b89135bb5c02fad3"
     },
     {
       "path": "site/source-build.json",
-      "sha256": "c6aea2b1c1bedfe724bda935cf84f4d24e0ce9a401ebd999fa0c2ef5545e9dcb"
+      "sha256": "5ebfdd12af4b964557917910599ef1ff1131dfb020e32a7b039ef81c66ae713d"
     },
     {
       "path": "site/comparison.json",
-      "sha256": "296ea3dd9f89d7b60c6eb9349d75dbf91b6535d6dd0b53a1ac3811931a70656f"
+      "sha256": "4cd7067ba2b6dd60b39dfac4351de88992aff0eba1cabb3f76d062d6cefcaeb3"
     }
   ],
   "sourceBuildReceipt": "comparison/source-build/result.json",
   "currentMeasurement": {
     "compiler": {
-      "commit": "aa2052f081ca8184666ca280ee9b91d476e46cfc",
-      "sha256": "13cb49a93fb3e376a5978484835322c84adea692b69ae4720775291377cf18f9"
+      "commit": "249686599dc3bf1b6bf70dc9a030081b755bbb24",
+      "sha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041"
     },
     "source": {
-      "commit": "e8690b8 plus the release working tree (committed together with these records)"
+      "commit": "5b5fde05b47b89350a0a203954de46f283a75709"
     },
     "upstream": {
       "repository": "https://github.com/remarkjs/remark-rehype.git",
