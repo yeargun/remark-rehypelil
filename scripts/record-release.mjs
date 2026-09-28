@@ -2,13 +2,13 @@
 // every delivered file, the test suites and a throughput sample.
 //
 //   LILSCRIPT_COMPILER=... LILSCRIPT_CODEC=... \
-//     node scripts/record-release.mjs --revision <compiler source revision> --previous <port commit>
+//     node scripts/record-release.mjs --revision <compiler source revision>
 //
 // It builds `--samples` times (default 3) with a clean compile each time, checks
 // that every build wrote the same bytes, and rewrites the measured fields of
 // site/results.json. Fields it does not measure (the official bars and the
-// playground) are kept as they are. `--previous` names the port commit of the
-// last release; its delivered files are measured from Git with the same codec.
+// playground) are kept as they are. The page shows this release only: no previous
+// release is recorded.
 import { createHash } from "node:crypto"
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { cpus, loadavg, tmpdir } from "node:os"
@@ -28,7 +28,6 @@ function argument(name, fallback) {
 const compiler = process.env.LILSCRIPT_COMPILER
 const codec = process.env.LILSCRIPT_CODEC
 const revision = argument("revision")
-const previousCommit = argument("previous")
 const samples = Number(argument("samples", "3"))
 if (!compiler || !codec) throw new Error("set LILSCRIPT_COMPILER and LILSCRIPT_CODEC to the pinned binaries")
 if (!revision) throw new Error("pass --revision: the compiler's source revision")
@@ -56,7 +55,6 @@ function measure(paths) {
 const loadAtStart = loadavg()
 const scratch = mkdtempSync(join(tmpdir(), "remark-rehypelil-record-"))
 const builds = []
-let previous = null
 try {
   for (let sample = 0; sample < samples; sample++) {
     const log = join(scratch, `compile-${sample}.jsonl`)
@@ -69,20 +67,6 @@ try {
     const invocations = readFileSync(log, "utf8").trim().split("\n").map((line) => JSON.parse(line))
     const hashes = delivered.map(({ path }) => sha256(readFileSync(resolve(root, path))))
     builds.push({ invocations, hashes })
-  }
-  if (previousCommit) {
-    const files = {}
-    const paths = delivered.map(({ path }, index) => {
-      const copy = join(scratch, `previous-${index}.js`)
-      writeFileSync(copy, execFileSync("git", ["show", `${previousCommit}:${path}`], { cwd: root }))
-      return copy
-    })
-    measure(paths).forEach((size, index) => {
-      files[delivered[index].path] = size
-    })
-    const date = execFileSync("git", ["show", "-s", "--format=%cs", previousCommit], { cwd: root, encoding: "utf8" }).trim()
-    const short = execFileSync("git", ["rev-parse", "--short=7", previousCommit], { cwd: root, encoding: "utf8" }).trim()
-    previous = { commit: short, date, files }
   }
 } finally {
   rmSync(scratch, { recursive: true, force: true })
@@ -173,12 +157,7 @@ data.delivered = delivered.map(({ path, condition, wrapper }, index) => ({
   wrapper,
   ...sizes[index],
 }))
-if (previous) {
-  data.previousRelease = {
-    ...(data.previousRelease ?? {}),
-    ...previous,
-  }
-}
+delete data.previousRelease
 data.spec = spec
 data.node = process.version
 data.runtime = `Node ${process.version}`

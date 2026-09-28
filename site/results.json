@@ -102,110 +102,75 @@
     {
       "id": "itslil",
       "name": "@itslil/remark-rehype · library",
-      "raw": 16264,
-      "gzip9": 5152,
-      "brotli11": 4610,
+      "raw": 16276,
+      "gzip9": 5116,
+      "brotli11": 4583,
       "note": "The npm ESM: LilScript 24968659 output with a license banner.",
       "primary": true,
-      "measuredAt": "2026-09-27T14:51:52Z",
-      "artifactSha256": "a843f88ce4d65912dc6bf56bae3832992b96bc26fa0eb647b89135bb5c02fad3"
+      "measuredAt": "2026-09-28T11:02:03Z",
+      "artifactSha256": "789cbfeea4a0813f0cbe74394ed9846ca31c18a4f5fdf51a8066453dc5f327db"
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/remark-rehype · closed",
-      "raw": 18227,
-      "gzip9": 6832,
-      "brotli11": 5885,
+      "raw": 18051,
+      "gzip9": 6783,
+      "brotli11": 5824,
       "note": "LilScript 24968659 under lilscript.closed.toml (level 12, no candidate search); diagnostic only.",
-      "measuredAt": "2026-09-27T14:51:52Z",
-      "artifactSha256": "9be7b721f007f51314523ad51f188697c7e87ce134c6178ebeb7b8d10f2489ca"
+      "measuredAt": "2026-09-28T11:02:03Z",
+      "artifactSha256": "323addef872b5c4dfdd394a1d146af320283e9edd37f0dbe246b58785cf728cb"
     }
   ],
   "throughput": [
     {
       "id": "official",
       "name": "remark-rehype@11.1.2",
-      "documentMs": 6.262
+      "documentMs": 2.434
     },
     {
       "id": "itslil",
       "name": "@itslil/remark-rehype",
-      "documentMs": 1.703
+      "documentMs": 0.802
     }
   ],
-  "sizeMeasuredAt": "2026-09-27T14:51:52Z",
+  "sizeMeasuredAt": "2026-09-28T11:02:03Z",
   "barsNote": "The earlier releases showed Terser bars of 4,910 (npm graph) and 5,000 (the Git-source build of 2026-09-10). Re-measured on 2026-09-24: Terser 5.43.1 reproduces 4,910 byte for byte, Terser 5.51.2, the bar shown, gives 4,908, and the Git-source build reproduces 5,000 byte for byte.",
-  "previousRelease": {
-    "compiler": "LilScript aa2052f0, the one compiler (the 2026-09-24 release)",
-    "note": "Every delivered file was already compiler-written: the ESM with a license banner, the CommonJS and browser files with module wrappers.",
-    "measuredWith": "the same lilscript-codec",
-    "commit": "b5ae9f7",
-    "date": "2026-09-24",
-    "files": {
-      "dist/remark-rehype.esm.js": {
-        "raw": 16701,
-        "gzip9": 5170,
-        "brotli11": 4632
-      },
-      "dist/remark-rehype.cjs": {
-        "raw": 16758,
-        "gzip9": 5211,
-        "brotli11": 4670
-      },
-      "dist/remark-rehype.umd.js": {
-        "raw": 16649,
-        "gzip9": 5169,
-        "brotli11": 4633
-      },
-      "dist/remark-rehype.closed.js": {
-        "raw": 18227,
-        "gzip9": 6832,
-        "brotli11": 5885
-      }
-    },
-    "compileWallMs": [
-      201.6,
-      199.4,
-      199.8
-    ],
-    "compileHost": "Azure Standard_B8als_v2, 8 vCPUs (the 2026-09-24 release record, 1-minute load average 5.4)"
-  },
   "delivered": [
     {
       "path": "dist/remark-rehype.esm.js",
       "condition": "import",
       "writtenBy": "compiler",
       "wrapper": "license banner",
-      "raw": 16264,
-      "gzip9": 5152,
-      "brotli11": 4610
+      "raw": 16276,
+      "gzip9": 5116,
+      "brotli11": 4583
     },
     {
       "path": "dist/remark-rehype.cjs",
       "condition": "require",
       "writtenBy": "compiler",
       "wrapper": "license banner, CommonJS export object",
-      "raw": 16321,
-      "gzip9": 5191,
-      "brotli11": 4638
+      "raw": 16333,
+      "gzip9": 5155,
+      "brotli11": 4621
     },
     {
       "path": "dist/remark-rehype.umd.js",
       "condition": "browser script (unpkg, jsdelivr)",
       "writtenBy": "compiler",
       "wrapper": "license banner, function scope, global remarkRehype",
-      "raw": 16212,
-      "gzip9": 5149,
-      "brotli11": 4632
+      "raw": 16224,
+      "gzip9": 5113,
+      "brotli11": 4581
     },
     {
       "path": "dist/remark-rehype.closed.js",
       "condition": "./closed",
       "writtenBy": "compiler",
       "wrapper": "none",
-      "raw": 18227,
-      "gzip9": 6832,
-      "brotli11": 5885
+      "raw": 18051,
+      "gzip9": 6783,
+      "brotli11": 5824
     }
   ],
   "throughputDocument": "mdast-util-to-hast's readme.md (38251 characters, CommonMark) as one mdast tree, 200 alternating runs",
@@ -214,14 +179,14 @@
     "binarySha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041",
     "codecSha256": "85329d361ef3339d4ff7b7ca1f00065d561340eb4fc98a2799af327134a3a3f0",
     "compileWallMs": [
-      555.8,
-      679.3,
-      547.6
+      531.4,
+      514.9,
+      516.8
     ],
     "buildCompileWallMs": [
-      655.8,
-      748.6,
-      677
+      591,
+      580.4,
+      582
     ],
     "invocations": [
       {
@@ -237,19 +202,19 @@
     ],
     "compileScope": "wall time of the compiler process for src/entry.lil with lilscript.toml, the shipped ESM",
     "buildScope": "wall time of all 2 compiler processes of one clean build",
-    "host": "Azure Standard_B8als_v2 (burstable), 8 vCPUs, Node v24.11.1",
+    "host": "this host, 8 vCPUs, Node v24.11.1",
     "loadAverage": {
       "start": [
-        4.75,
-        4.99,
-        5.41
+        1.61,
+        1.1,
+        1.28
       ],
       "end": [
-        4.75,
-        4.99,
-        5.41
+        1.61,
+        1.1,
+        1.28
       ]
     },
-    "date": "2026-09-27"
+    "date": "2026-09-28"
   }
 }
