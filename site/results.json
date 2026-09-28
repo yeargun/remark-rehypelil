@@ -30,64 +30,64 @@
     {
       "id": "official",
       "name": "Official remark-rehype@11.1.2 graph",
-      "raw": 39783,
-      "gzip9": 8849,
-      "brotli11": 7919,
-      "note": "esbuild bundle of the published package plus its runtime dependencies (site/official.js, the playground lane), unminified",
-      "measuredAt": "2026-09-24T06:20:00Z",
-      "artifactSha256": "3813e736e9febb3c24f541f7921b8339504272abf8d4432f16d96c022e477feb",
+      "raw": 40230,
+      "gzip9": 8984,
+      "brotli11": 8028,
+      "note": "esbuild bundle of the published package plus its runtime dependencies (site/official.js, the playground lane), unminified Dependencies as a fresh install resolves them on 2026-09-28 (@ungap/structured-clone 1.4.0).",
+      "measuredAt": "2026-09-28T13:08:51Z",
+      "artifactSha256": "d7cb4e3e4f6eb506f93739bb485d139981a0a39526a71646dae695c671ca0971",
       "diagnostic": false
     },
     {
       "id": "official-terser-mangle",
       "name": "Official · Terser mangle on",
-      "raw": 16855,
-      "gzip9": 5443,
-      "brotli11": 4908,
+      "raw": 17050,
+      "gzip9": 5527,
+      "brotli11": 4998,
       "note": "Terser 5.51.2 of that graph, module, compress passes 3, mangle: true. The strongest bar on every codec",
-      "measuredAt": "2026-09-24T06:20:00Z",
-      "artifactSha256": "52b03b35b329700b69a2a91c658651d57bbae4b7f72ca1edd9a37c2f01270956",
+      "measuredAt": "2026-09-28T13:08:51Z",
+      "artifactSha256": "be2f6d0ca22ad6695df2a063886acc381189c80e0baee523432564d318913429",
       "baseline": true
     },
     {
       "id": "official-terser-nomangle",
       "name": "Official · Terser mangle off",
-      "raw": 24918,
-      "gzip9": 6585,
-      "brotli11": 5973,
+      "raw": 25169,
+      "gzip9": 6688,
+      "brotli11": 6066,
       "note": "Terser 5.51.2 of that graph, module, compress passes 3, mangle: false",
-      "measuredAt": "2026-09-24T06:20:00Z",
-      "artifactSha256": "9dcf527b36583ee2e27bbda7480ec0bb050f1798659eea8adb9cff98fa5055a4"
+      "measuredAt": "2026-09-28T13:08:51Z",
+      "artifactSha256": "a95f6122005191ef5b64d8db259c46ae758dd039946a4a19efe619b517ef9a06"
     },
     {
       "id": "official-oxc-mangle",
       "name": "Official · Oxc mangle on",
-      "raw": 16875,
-      "gzip9": 5563,
-      "brotli11": 5056,
+      "raw": 17073,
+      "gzip9": 5658,
+      "brotli11": 5149,
       "note": "Oxc minify (Vite 8.2.1) of that graph, mangle: true",
-      "measuredAt": "2026-09-24T06:20:00Z",
-      "artifactSha256": "cf92cf4fc99f4142630c4004254d3e89446e2198abdc62cb3830f9e7844c2ab3"
+      "measuredAt": "2026-09-28T13:08:51Z",
+      "artifactSha256": "ddab76270cce2546a64d383a99c93166b1fecb6721c2936f42b8566351349790"
     },
     {
       "id": "official-oxc-nomangle",
       "name": "Official · Oxc mangle off",
-      "raw": 25338,
-      "gzip9": 6814,
-      "brotli11": 6160,
+      "raw": 25570,
+      "gzip9": 6915,
+      "brotli11": 6247,
       "note": "Oxc minify (Vite 8.2.1) of that graph, mangle: false",
-      "measuredAt": "2026-09-24T06:20:00Z",
-      "artifactSha256": "e3e776fb7e8abc36253c39b5017708972ca8fde8405aa214dae24e77abe44cce"
+      "measuredAt": "2026-09-28T13:08:51Z",
+      "artifactSha256": "4136f0172c17f1726319bb5a6fee4fd696c9d3cf90f4333c5ecd430b3ebc555f"
     },
     {
       "id": "official-esbuild",
       "name": "Official · esbuild minify",
-      "raw": 17438,
-      "gzip9": 5824,
-      "brotli11": 5287,
+      "raw": 17638,
+      "gzip9": 5921,
+      "brotli11": 5386,
       "note": "esbuild 0.28.1 minify of that graph",
-      "measuredAt": "2026-09-24T06:20:00Z",
-      "artifactSha256": "08c3efa53112316c0a62d131091e299b7a677db2d4a06ad1038cc8250cd97161"
+      "measuredAt": "2026-09-28T13:08:51Z",
+      "artifactSha256": "3f7ad21a0564c1675cb9e29b7479e3dd8d4d08f8cbdf40001d4dd00c99561988"
     },
     {
       "id": "official-source-terser",
@@ -96,44 +96,44 @@
       "gzip9": 5529,
       "brotli11": 5000,
       "note": "The same package built from its pinned Git revision (b5a2e5b), bundled, then Terser 5.51.2 mangle on; the ESM of the source-build record (reproduced byte for byte from the 2026-09-10 record)",
-      "measuredAt": "2026-09-24T06:17:03Z",
+      "measuredAt": "2026-09-28T13:08:51Z",
       "artifactSha256": "064b99e3c2907b17bbcda666a89412baed7a769b1bb136b83b40afbdf481a81a"
     },
     {
       "id": "itslil",
       "name": "@itslil/remark-rehype · library",
-      "raw": 16276,
-      "gzip9": 5116,
-      "brotli11": 4583,
+      "raw": 19722,
+      "gzip9": 6188,
+      "brotli11": 5528,
       "note": "The npm ESM: LilScript 24968659 output with a license banner.",
       "primary": true,
-      "measuredAt": "2026-09-28T11:02:03Z",
-      "artifactSha256": "789cbfeea4a0813f0cbe74394ed9846ca31c18a4f5fdf51a8066453dc5f327db"
+      "measuredAt": "2026-09-28T13:08:03Z",
+      "artifactSha256": "b4b581281b1155f5af447f36ab29270412a63e3cf2d785fce54b11796d87d284"
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/remark-rehype · closed",
-      "raw": 18051,
-      "gzip9": 6783,
-      "brotli11": 5824,
+      "raw": 21721,
+      "gzip9": 8196,
+      "brotli11": 7088,
       "note": "LilScript 24968659 under lilscript.closed.toml (level 12, no candidate search); diagnostic only.",
-      "measuredAt": "2026-09-28T11:02:03Z",
-      "artifactSha256": "323addef872b5c4dfdd394a1d146af320283e9edd37f0dbe246b58785cf728cb"
+      "measuredAt": "2026-09-28T13:08:03Z",
+      "artifactSha256": "84922223b624e41d1980b28cac6f1265b93b27cf9f46db4968b215009ab104a4"
     }
   ],
   "throughput": [
     {
       "id": "official",
       "name": "remark-rehype@11.1.2",
-      "documentMs": 2.434
+      "documentMs": 2.624
     },
     {
       "id": "itslil",
       "name": "@itslil/remark-rehype",
-      "documentMs": 0.802
+      "documentMs": 0.869
     }
   ],
-  "sizeMeasuredAt": "2026-09-28T11:02:03Z",
+  "sizeMeasuredAt": "2026-09-28T13:08:03Z",
   "barsNote": "The earlier releases showed Terser bars of 4,910 (npm graph) and 5,000 (the Git-source build of 2026-09-10). Re-measured on 2026-09-24: Terser 5.43.1 reproduces 4,910 byte for byte, Terser 5.51.2, the bar shown, gives 4,908, and the Git-source build reproduces 5,000 byte for byte.",
   "delivered": [
     {
@@ -141,36 +141,36 @@
       "condition": "import",
       "writtenBy": "compiler",
       "wrapper": "license banner",
-      "raw": 16276,
-      "gzip9": 5116,
-      "brotli11": 4583
+      "raw": 19722,
+      "gzip9": 6188,
+      "brotli11": 5528
     },
     {
       "path": "dist/remark-rehype.cjs",
       "condition": "require",
       "writtenBy": "compiler",
       "wrapper": "license banner, CommonJS export object",
-      "raw": 16333,
-      "gzip9": 5155,
-      "brotli11": 4621
+      "raw": 19779,
+      "gzip9": 6221,
+      "brotli11": 5570
     },
     {
       "path": "dist/remark-rehype.umd.js",
       "condition": "browser script (unpkg, jsdelivr)",
       "writtenBy": "compiler",
       "wrapper": "license banner, function scope, global remarkRehype",
-      "raw": 16224,
-      "gzip9": 5113,
-      "brotli11": 4581
+      "raw": 19670,
+      "gzip9": 6178,
+      "brotli11": 5520
     },
     {
       "path": "dist/remark-rehype.closed.js",
       "condition": "./closed",
       "writtenBy": "compiler",
       "wrapper": "none",
-      "raw": 18051,
-      "gzip9": 6783,
-      "brotli11": 5824
+      "raw": 21721,
+      "gzip9": 8196,
+      "brotli11": 7088
     }
   ],
   "throughputDocument": "mdast-util-to-hast's readme.md (38251 characters, CommonMark) as one mdast tree, 200 alternating runs",
@@ -179,14 +179,14 @@
     "binarySha256": "47048e41164027e92d3bf1d1840d8d83e04c60532c031ceb3346222e194b3041",
     "codecSha256": "85329d361ef3339d4ff7b7ca1f00065d561340eb4fc98a2799af327134a3a3f0",
     "compileWallMs": [
-      531.4,
-      514.9,
-      516.8
+      660.4,
+      607.3,
+      633.1
     ],
     "buildCompileWallMs": [
-      591,
-      580.4,
-      582
+      738.8,
+      683.9,
+      711.9
     ],
     "invocations": [
       {
@@ -205,14 +205,14 @@
     "host": "this host, 8 vCPUs, Node v24.11.1",
     "loadAverage": {
       "start": [
-        1.61,
-        1.1,
-        1.28
+        2.83,
+        2.43,
+        2.34
       ],
       "end": [
-        1.61,
-        1.1,
-        1.28
+        2.84,
+        2.44,
+        2.34
       ]
     },
     "date": "2026-09-28"

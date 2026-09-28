@@ -25,13 +25,13 @@ Built by the one LilScript compiler, revision `24968659` (binary SHA-256 `47048e
 
 | File | Raw | gzip-9 | Brotli-11 |
 | --- | ---: | ---: | ---: |
-| Official graph · Terser mangle (bar) | 16,855 | 5,443 | 4,908 |
-| Official graph · Oxc mangle (Vite 8.2.1) | 16,875 | 5,563 | 5,056 |
-| Official graph · esbuild minify | 17,438 | 5,824 | 5,287 |
+| Official graph · Terser mangle (bar) | 17,050 | 5,527 | 4,998 |
+| Official graph · Oxc mangle (Vite 8.2.1) | 17,073 | 5,658 | 5,149 |
+| Official graph · esbuild minify | 17,638 | 5,921 | 5,386 |
 | Official, built from its Git source (b5a2e5b) · Terser mangle | 17,051 | 5,529 | 5,000 |
-| **`dist/remark-rehype.esm.js`** (npm) | **16,276** | **5,116** | **4,583** |
+| **`dist/remark-rehype.esm.js`** (npm) | **19,722** | **6,188** | **5,528** |
 
-The npm ESM is 325 B (6.6%) under Terser in Brotli, 327 B in gzip and 579 B raw. The earlier releases showed a Terser bar of 4,910; Terser 5.43.1 reproduces it byte for byte, and Terser 5.51.2 gives 4,908.
+The npm ESM is 530 B (10.6%) larger than Terser in Brotli, 661 B larger in gzip and 2,672 B larger raw. Both carry @ungap/structured-clone's polyfill for runtimes without structuredClone, which upstream ships and this port matches since 11.1.6; the bars are measured on the graph a fresh install resolves (@ungap/structured-clone 1.4.0).
 
 Every delivered file is compiler-written: the ESM is the compiler's output with a license banner, and `dist/remark-rehype.cjs` (require) and `dist/remark-rehype.umd.js` (browser script, sets `globalThis.remarkRehype`) wrap the same program, with its export clause replaced by `module.exports` or the global. No minifier runs after the compiler; the esbuild reprints of the CommonJS and browser files went away in the 2026-09-24 release (now CommonJS 4,621 Brotli, browser script 4,581).
 

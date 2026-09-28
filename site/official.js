@@ -628,6 +628,7 @@ var ERROR = 7;
 var BIGINT = 8;
 
 // node_modules/@ungap/structured-clone/esm/deserialize.js
+var { defineProperty } = Object;
 var env = typeof self === "object" ? self : globalThis;
 var guard = (name, init) => {
   switch (name) {
@@ -662,8 +663,16 @@ var deserializer = ($, _) => {
       }
       case OBJECT: {
         const object = as({}, index);
-        for (const [key, index2] of value)
-          object[unpair(key)] = unpair(index2);
+        for (const [key, index2] of value) {
+          const k = unpair(key), value2 = unpair(index2);
+          if (k === "__proto__") defineProperty(object, k, {
+            value: value2,
+            configurable: true,
+            enumerable: true,
+            writable: true
+          });
+          else object[k] = value2;
+        }
         return object;
       }
       case DATE:
@@ -701,6 +710,8 @@ var deserializer = ($, _) => {
         const { buffer } = new Uint8Array(value);
         return as(new DataView(buffer), value);
       }
+      case "-0":
+        return -0;
     }
     return as(guard(type, value), index);
   };
@@ -711,7 +722,7 @@ var deserialize = (serialized) => deserializer(/* @__PURE__ */ new Map(), serial
 // node_modules/@ungap/structured-clone/esm/serialize.js
 var EMPTY = "";
 var { toString } = {};
-var { keys } = Object;
+var { keys, is } = Object;
 var typeOf = (value) => {
   const type = typeof value;
   if (type !== "object" || !value)
@@ -757,6 +768,10 @@ var serializer = (strict, json, $, _) => {
           case "bigint":
             TYPE = BIGINT;
             entry = value.toString();
+            break;
+          case "number":
+            if (!value && is(value, -0))
+              return _.push(["-0"]) - 1;
             break;
           case "function":
           case "symbol":
@@ -1074,7 +1089,7 @@ function visitParents(tree, test, visitor, reverse) {
   } else {
     check = test;
   }
-  const is2 = convert(check);
+  const is3 = convert(check);
   const step = reverse ? -1 : 1;
   factory(tree, void 0, [])();
   function factory(node, index, parents) {
@@ -1100,7 +1115,7 @@ function visitParents(tree, test, visitor, reverse) {
       let subresult;
       let offset;
       let grandparents;
-      if (!test || is2(node, index, parents[parents.length - 1] || void 0)) {
+      if (!test || is3(node, index, parents[parents.length - 1] || void 0)) {
         result = toResult(visitor(node, parents));
         if (result[0] === EXIT) {
           return result;
