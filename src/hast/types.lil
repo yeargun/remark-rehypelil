@@ -341,18 +341,6 @@ export bool optionFlag(JsValue options, string key) {
   return JS.get(options, key).truthy();
 }
 
-export string firstLang(string lang) {
-  int i = 0;
-  int n = lang.length;
-  while (i < n) {
-    int c = lang.charCodeAt(i);
-    if (c <= 32) {
-      return lang.slice(0, i);
-    }
-    i = i + 1;
-  }
-  return lang;
-}
 
 export bool arrayIncludes(JsValue arr, string value) {
   if (!JS.isArray(arr)) {

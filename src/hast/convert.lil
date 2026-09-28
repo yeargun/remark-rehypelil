@@ -7,7 +7,6 @@ import {
   definitionId,
   element,
   emptyChildren,
-  firstLang,
   hasOwn,
   jsString,
   normalizeUri,
@@ -115,17 +114,15 @@ JsValue handleInlineCode(JsValue _s, JsValue state, JsValue node, JsValue _p) {
 
 JsValue handleCode(JsValue _s, JsValue state, JsValue node, JsValue _p) {
   JsValue raw = JS.get(node, "value");
-  string value = "";
-  if (raw is string && raw.length > 0) {
-    value = raw + "\n";
-  }
+  string value = if (raw.truthy()) { raw + "\n" } else { "" };
   JsValue props = JS.object();
+  // Someone can write `js&#x20;python&#x9;ruby`, and any Unicode space splits (JavaScript's `\s`);
+  // GitHub and CommonMark keep only the first language, which is empty after a leading space.
   JsValue langVal = JS.get(node, "lang");
-  if (langVal is string && langVal.length > 0) {
-    string lang = firstLang(langVal);
-    if (lang.length > 0) {
-      props["className"] = arr1("language-" + lang);
-    }
+  Regex whitespace = new Regex("\\s+", "");
+  JsValue language = if (langVal.truthy()) { JS.invoke(langVal, "split", whitespace) } else { JS.array() };
+  if (language.length > 0.0) {
+    props["className"] = arr1("language-" + language[0]);
   }
   JsValue result = element("code", props, arr1(textNode(value)));
   JsValue meta = JS.get(node, "meta");

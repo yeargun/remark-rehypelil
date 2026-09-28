@@ -1,6 +1,6 @@
 {
   "name": "@itslil/remark-rehype",
-  "version": "11.1.4",
+  "version": "11.1.5",
   "description": "remark-rehype reimplemented in LilScript",
   "keywords": [
     "remark",
