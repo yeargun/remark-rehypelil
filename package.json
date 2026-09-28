@@ -1,6 +1,6 @@
 {
   "name": "@itslil/remark-rehype",
-  "version": "11.1.5",
+  "version": "11.1.6",
   "description": "remark-rehype reimplemented in LilScript",
   "keywords": [
     "remark",
@@ -73,6 +73,7 @@
     "esbuild": "0.28.1",
     "rehype-stringify": "^10.0.1",
     "remark-parse": "^11.0.0",
+    "remark-rehype": "11.1.2",
     "remark-stringify": "^11.0.0",
     "typescript": "5.5.4"
   }

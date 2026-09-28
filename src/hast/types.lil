@@ -1,6 +1,8 @@
+// @ungap/structured-clone, as mdast-util-to-hast imports it: the runtime's structuredClone, else its polyfill.
+import { structuredClone } from "./structured-clone.lil";
+
 extern JsValue Object;
 extern JsValue String;
-extern JsValue structuredClone;
 
 export bool hasOwn(JsValue obj, string key) {
   return JS.call(JS.get(JS.get(Object, "prototype"), "hasOwnProperty"), obj, key).truthy();

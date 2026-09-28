@@ -1,0 +1,276 @@
+extern JsValue Error;
+extern JsValue JSON;
+extern JsValue Map;
+extern JsValue Object;
+extern JsValue Reflect;
+extern JsValue RegExp;
+extern JsValue Symbol;
+extern JsValue TypeError;
+extern JsValue globalThis;
+extern JsValue Set;
+extern JsValue Date;
+extern JsValue BigInt;
+extern JsValue Uint8Array;
+extern JsValue DataView;
+
+// @ungap/structured-clone@1.4.0, the `structuredClone` mdast-util-to-hast calls on a
+// node's `data.hProperties`: the runtime's own structuredClone where it has one,
+// otherwise the package's serialize/deserialize polyfill (Hermes, Safari before
+// 15.4). mdast-util-to-hast passes no options, so the serializer is the strict one
+// (a function or a symbol throws) and never reads `toJSON`.
+
+JsValue objectToString = JS.get(JS.get(Object, "prototype"), "toString");
+JsValue iteratorSymbol = JS.get(Symbol, "iterator");
+// -0, made at run time so no constant folding can turn it into 0.
+JsValue negativeZero = JS.invoke(JSON, "parse", "-0");
+
+// `for (const entry of iterable)`: the iterable's own iterator, its `next` read once.
+void forOf(JsValue iterable, JsValue visit) {
+  JsValue iterator = JS.call(JS.invoke(Reflect, "get", iterable, iteratorSymbol), iterable);
+  JsValue next = JS.get(iterator, "next");
+  JsValue step = JS.call(next, iterator);
+  while (!JS.get(step, "done").truthy()) {
+    JS.call(visit, JS.undefined(), JS.get(step, "value"));
+    step = JS.call(next, iterator);
+  }
+}
+
+// types.js: VOID -1, PRIMITIVE 0, ARRAY 1, OBJECT 2, DATE 3, REGEXP 4, MAP 5, SET 6,
+// ERROR 7, BIGINT 8. `typeOf` answers `[TYPE, type]` as serialize.js does.
+JsValue typeOf(JsValue value) {
+  string type = JS.typeOf(value);
+  if (type != "object" || !value.truthy()) {
+    return JS.array(0, type);
+  }
+  JsValue asString = JS.invoke(JS.call(objectToString, value), "slice", 8, -1);
+  if (JS.strictEqual(asString, "Array")) return JS.array(1, "");
+  if (JS.strictEqual(asString, "Object")) return JS.array(2, "");
+  if (JS.strictEqual(asString, "Date")) return JS.array(3, "");
+  if (JS.strictEqual(asString, "RegExp")) return JS.array(4, "");
+  if (JS.strictEqual(asString, "Map")) return JS.array(5, "");
+  if (JS.strictEqual(asString, "Set")) return JS.array(6, "");
+  if (JS.strictEqual(asString, "DataView")) return JS.array(1, asString);
+  if (JS.invoke(asString, "includes", "Array").truthy()) return JS.array(1, asString);
+  // `value instanceof Error`
+  if (JS.invoke(JS.get(Error, "prototype"), "isPrototypeOf", value).truthy()) {
+    return JS.array(7, JS.or(JS.get(value, "name"), "Error"));
+  }
+  return JS.array(2, asString);
+}
+
+float serializeAs(JsValue out, JsValue value, JsValue seen, JsValue records) {
+  float index = JS.number(JS.invoke(records, "push", out)) - 1.0;
+  JS.invoke(seen, "set", value, index);
+  return index;
+}
+
+float pair(JsValue value, JsValue seen, JsValue records) {
+  if (JS.invoke(seen, "has", value).truthy()) {
+    return JS.number(JS.invoke(seen, "get", value));
+  }
+  JsValue kind = typeOf(value);
+  float tag = JS.number(kind[0]);
+  JsValue type = kind[1];
+  if (tag == 0.0) {
+    if (JS.strictEqual(type, "bigint")) {
+      return serializeAs(JS.array(8, JS.invoke(value, "toString")), value, seen, records);
+    }
+    if (JS.strictEqual(type, "function") || JS.strictEqual(type, "symbol")) {
+      throw JS.construct(TypeError, "unable to serialize " + type);
+    }
+    // -0 is kept as its own record, never remembered (so a later 0 is not mistaken for it).
+    if (JS.strictEqual(type, "number") && !value.truthy() && JS.invoke(Object, "is", value, negativeZero).truthy()) {
+      return JS.number(JS.invoke(records, "push", JS.array("-0"))) - 1.0;
+    }
+    if (JS.strictEqual(type, "undefined")) {
+      return serializeAs(JS.array(-1), value, seen, records);
+    }
+    return serializeAs(JS.array(0, value), value, seen, records);
+  }
+  if (tag == 1.0) {
+    if (type.truthy()) {
+      JsValue spread = value;
+      if (JS.strictEqual(type, "DataView")) {
+        spread = JS.construct(Uint8Array, JS.get(value, "buffer"));
+      } else if (JS.strictEqual(type, "ArrayBuffer")) {
+        spread = JS.construct(Uint8Array, value);
+      }
+      JsValue items = JS.array();
+      forOf(spread, JS.method1((JsValue _s, JsValue item) => {
+        JS.invoke(items, "push", item);
+        return JS.undefined();
+      }));
+      return serializeAs(JS.array(type, items), value, seen, records);
+    }
+    JsValue arr = JS.array();
+    float arrIndex = serializeAs(JS.array(1, arr), value, seen, records);
+    forOf(value, JS.method1((JsValue _s, JsValue entry) => {
+      JS.invoke(arr, "push", pair(entry, seen, records));
+      return JS.undefined();
+    }));
+    return arrIndex;
+  }
+  if (tag == 2.0) {
+    if (type.truthy()) {
+      if (JS.strictEqual(type, "BigInt")) {
+        return serializeAs(JS.array(type, JS.invoke(value, "toString")), value, seen, records);
+      }
+      if (JS.strictEqual(type, "Boolean") || JS.strictEqual(type, "Number") || JS.strictEqual(type, "String")) {
+        return serializeAs(JS.array(type, JS.invoke(value, "valueOf")), value, seen, records);
+      }
+    }
+    JsValue fields = JS.array();
+    float objectIndex = serializeAs(JS.array(2, fields), value, seen, records);
+    JsValue names = JS.invoke(Object, "keys", value);
+    for (float at = 0.0; at < names.length; at++) {
+      string key = JS.assume(names[at]);
+      float keyIndex = pair(key, seen, records);
+      JS.invoke(fields, "push", JS.array(keyIndex, pair(JS.get(value, key), seen, records)));
+    }
+    return objectIndex;
+  }
+  if (tag == 3.0) {
+    JsValue time = JS.invoke(value, "getTime");
+    return serializeAs(JS.array(3, if (JS.strictEqual(time, time)) { JS.invoke(value, "toISOString") } else { "" }), value, seen, records);
+  }
+  if (tag == 4.0) {
+    JsValue source = JS.get(value, "source");
+    return serializeAs(JS.array(4, JS.object("source", source, "flags", JS.get(value, "flags"))), value, seen, records);
+  }
+  if (tag == 5.0) {
+    JsValue mapEntries = JS.array();
+    float mapIndex = serializeAs(JS.array(5, mapEntries), value, seen, records);
+    forOf(value, JS.method1((JsValue _s, JsValue item) => {
+      float keyIndex = pair(item[0], seen, records);
+      JS.invoke(mapEntries, "push", JS.array(keyIndex, pair(item[1], seen, records)));
+      return JS.undefined();
+    }));
+    return mapIndex;
+  }
+  if (tag == 6.0) {
+    JsValue setEntries = JS.array();
+    float setIndex = serializeAs(JS.array(6, setEntries), value, seen, records);
+    forOf(value, JS.method1((JsValue _s, JsValue entry) => {
+      JS.invoke(setEntries, "push", pair(entry, seen, records));
+      return JS.undefined();
+    }));
+    return setIndex;
+  }
+  JsValue message = JS.get(value, "message");
+  return serializeAs(JS.array(7, JS.object("name", type, "message", message)), value, seen, records);
+}
+
+JsValue serialize(JsValue value) {
+  JsValue records = JS.array();
+  pair(value, JS.construct(Map), records);
+  return records;
+}
+
+// deserialize.js
+JsValue selfValue = JS.get(globalThis, "self");
+JsValue env = if (JS.typeOf(selfValue) == "object") { selfValue } else { globalThis };
+
+JsValue guard(JsValue name, JsValue argument) {
+  if (
+    JS.strictEqual(name, "Function") || JS.strictEqual(name, "SharedWorker") || JS.strictEqual(name, "Worker") ||
+    JS.strictEqual(name, "eval") || JS.strictEqual(name, "setInterval") || JS.strictEqual(name, "setTimeout")
+  ) {
+    throw JS.construct(TypeError, "unable to deserialize " + name);
+  }
+  string global = JS.assume(name);
+  return JS.construct(JS.get(env, global), argument);
+}
+
+JsValue deserializeAs(JsValue out, JsValue key, JsValue seen) {
+  JS.invoke(seen, "set", key, out);
+  return out;
+}
+
+JsValue unpair(JsValue index, JsValue seen, JsValue records) {
+  if (JS.invoke(seen, "has", index).truthy()) {
+    return JS.invoke(seen, "get", index);
+  }
+  JsValue entry = records[JS.number(index)];
+  JsValue type = entry[0];
+  JsValue value = entry[1];
+  if (JS.strictEqual(type, 0) || JS.strictEqual(type, -1)) {
+    return deserializeAs(value, index, seen);
+  }
+  if (JS.strictEqual(type, 1)) {
+    JsValue arr = deserializeAs(JS.array(), index, seen);
+    for (float at = 0.0; at < value.length; at++) {
+      JS.invoke(arr, "push", unpair(value[at], seen, records));
+    }
+    return arr;
+  }
+  if (JS.strictEqual(type, 2)) {
+    JsValue object = deserializeAs(JS.object(), index, seen);
+    for (float at = 0.0; at < value.length; at++) {
+      string key = JS.assume(unpair(value[at][0], seen, records));
+      JsValue field = unpair(value[at][1], seen, records);
+      // An own `__proto__` key stays an own property (1.4.0), instead of setting the prototype.
+      if (key == "__proto__") {
+        JS.invoke(Object, "defineProperty", object, key, JS.object("value", field, "configurable", true, "enumerable", true, "writable", true));
+      } else {
+        JS.set(object, key, field);
+      }
+    }
+    return object;
+  }
+  if (JS.strictEqual(type, 3)) {
+    return deserializeAs(JS.construct(Date, value), index, seen);
+  }
+  if (JS.strictEqual(type, 4)) {
+    return deserializeAs(JS.construct(RegExp, JS.get(value, "source"), JS.get(value, "flags")), index, seen);
+  }
+  if (JS.strictEqual(type, 5)) {
+    JsValue map = deserializeAs(JS.construct(Map), index, seen);
+    for (float at = 0.0; at < value.length; at++) {
+      JsValue key = unpair(value[at][0], seen, records);
+      JS.invoke(map, "set", key, unpair(value[at][1], seen, records));
+    }
+    return map;
+  }
+  if (JS.strictEqual(type, 6)) {
+    JsValue set = deserializeAs(JS.construct(Set), index, seen);
+    for (float at = 0.0; at < value.length; at++) {
+      JS.invoke(set, "add", unpair(value[at], seen, records));
+    }
+    return set;
+  }
+  if (JS.strictEqual(type, 7)) {
+    JsValue name = JS.get(value, "name");
+    JsValue message = JS.get(value, "message");
+    string global = JS.assume(name);
+    return deserializeAs(if (JS.typeOf(JS.get(env, global)) == "function") { guard(name, message) } else { JS.construct(Error, message) }, index, seen);
+  }
+  if (JS.strictEqual(type, 8)) {
+    return deserializeAs(JS.call(BigInt, JS.undefined(), value), index, seen);
+  }
+  if (JS.strictEqual(type, "BigInt")) {
+    return deserializeAs(JS.call(Object, JS.undefined(), JS.call(BigInt, JS.undefined(), value)), index, seen);
+  }
+  // As in deserialize.js, these two are remembered by their record's value, not its index.
+  if (JS.strictEqual(type, "ArrayBuffer")) {
+    return deserializeAs(JS.get(JS.construct(Uint8Array, value), "buffer"), value, seen);
+  }
+  if (JS.strictEqual(type, "DataView")) {
+    JsValue buffer = JS.get(JS.construct(Uint8Array, value), "buffer");
+    return deserializeAs(JS.construct(DataView, buffer), value, seen);
+  }
+  if (JS.strictEqual(type, "-0")) {
+    return negativeZero;
+  }
+  return deserializeAs(guard(type, value), index, seen);
+}
+
+// index.js: the choice is made once, when the module loads.
+export JsValue structuredClone = if (JS.typeOf(JS.get(globalThis, "structuredClone")) == "function") {
+  JS.method1((JsValue _s, JsValue any) => {
+    return JS.invoke(globalThis, "structuredClone", any);
+  })
+} else {
+  JS.method1((JsValue _s, JsValue any) => {
+    return unpair(0, JS.construct(Map), serialize(any));
+  })
+};
