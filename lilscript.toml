@@ -1,13 +1,46 @@
-# reusable ESM — host-visible names stay
+# Compiler-owned delivery; no JavaScript post-minifier or export rewriting.
+[policy]
+version = 3
 [javascript]
 priority = "size-first"
-optimization_level = 15
-cost_model = "brotli"
+# Assumes unpatched platform builtins; disable when consumers replace them.
 assume_pristine_builtins = true
-strip_console = true
-candidate_search = "always"
+# Remove debugLog instrumentation; ordinary print and host console effects remain.
+strip_debug = true
 
+# Preserved effort setting. 13 favors size; 14/15 allow more expensive marginal searches.
+[effort]
+level = 15
+
+# Optimize the delivered files for this codec, independently of raw/gzip objectives.
+[objective]
+codecs = "brotli"
 [mangle]
 identifiers = true
 properties = true
 pool_strings = true
+
+# Public/extern keys are preserved in every build; effort controls search, not ABI.
+[delivery]
+mode = "single"
+directory = "."
+select = ["index"]
+entry_names = "remark-rehype.esm.js"
+[delivery.entries]
+index = "src/entry.lil"
+browser = "src/browser.lil"
+
+[[delivery.also]]
+name = "cjs"
+format = "cjs"
+entries = ["index"]
+entry_names = "remark-rehype.cjs"
+
+[[delivery.also]]
+name = "browser"
+format = "iife"
+entries = ["browser"]
+exports = "default"
+global = "remarkRehype"
+global_binding = "property"
+entry_names = "remark-rehype.umd.js"

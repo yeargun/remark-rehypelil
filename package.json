@@ -49,7 +49,13 @@
     "NOTICE.md",
     "README.md"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/remark-rehype.cjs",
+    "./dist/remark-rehype.closed.js",
+    "./dist/remark-rehype.esm.js",
+    "./dist/remark-rehype.raw.js",
+    "./dist/remark-rehype.umd.js"
+  ],
   "engines": {
     "node": ">=18"
   },
