@@ -1,3 +1,7 @@
+import {renderComparison} from './objective-comparison.js';
+const currentComparison=await fetch('./comparison.json').then(response=>{if(!response.ok)throw Error('Comparison could not load');return response.json()});
+renderComparison(currentComparison);
+import { renderDelivery } from "./current-delivery.js"
 const data = await fetch("./results.json").then((response) => {
   if (!response.ok) throw new Error(`Unable to load results: ${response.status}`)
   return response.json()
@@ -56,7 +60,7 @@ function ms(value) {
 }
 
 function renderCodec(metric, ids, barId, bodyId) {
-  const baseline = data.size.find((lane) => lane.baseline)
+  const baseline = originalBar(metric)
   const lanes = ids.map(laneById).filter(Boolean)
   if (!baseline || lanes.length === 0) return
   const max = Math.max(...lanes.map((lane) => lane[metric]))
@@ -74,80 +78,11 @@ function renderCodec(metric, ids, barId, bodyId) {
     .join("")
 }
 
-function renderHero() {
-  const baseline = data.size.find((lane) => lane.baseline)
-  const itslil = laneById("itslil")
-  if (!baseline || !itslil) return
-  const smaller = smallerThan(itslil.brotli11, baseline.brotli11)
-  document.querySelector("#hero-ratio").innerHTML = `${smaller.amount}<span>${smaller.word}</span>`
-  document.querySelector("#hero-bytes").textContent =
-    `${formatter.format(baseline.brotli11)} B → ${formatter.format(itslil.brotli11)} B Brotli-11`
-  document.querySelector("#hero-shipped").textContent = smaller.text
-  document.querySelector("#hero-gzip").textContent = smallerThan(itslil.gzip9, baseline.gzip9).text
-  document.querySelector("#hero-raw").textContent = smallerThan(itslil.raw, baseline.raw).text
-  const spec = data.spec
-    ? `${formatter.format(data.spec.pass)}/${formatter.format(data.spec.total)}`
-    : "—"
-  document.querySelector("#hero-spec").textContent = spec
-  for (const node of document.querySelectorAll("[data-spec]")) node.textContent = spec
-}
+function renderHero() {}
 
-function renderSize() {
-  const baseline = data.size.find((lane) => lane.baseline)
-  if (!baseline) return
-  const officialIds = data.size.filter((lane) => lane.id.startsWith("official")).map((lane) => lane.id)
-  renderCodec("brotli11", [...officialIds, "itslil", "itslil-closed"], "#bar-brotli", "#body-brotli")
-  renderCodec("gzip9", [...officialIds, "itslil", "itslil-closed"], "#bar-gzip", "#body-gzip")
-  renderCodec("raw", [...officialIds, "itslil", "itslil-closed"], "#bar-raw", "#body-raw")
-  document.querySelector("#body-matched").innerHTML = data.size
-    .map((lane) => {
-      const verdict = smallerThan(lane.brotli11, baseline.brotli11)
-      return `<tr><th scope="row">${lane.name}</th><td>${formatter.format(lane.raw)}</td><td>${formatter.format(lane.gzip9)}</td><td>${formatter.format(lane.brotli11)}</td><td class="verdict ${verdict.state}"><strong>${verdict.text}</strong></td></tr>`
-    })
-    .join("")
-}
+function renderSize() {}
 
-function renderPerf() {
-  const suites = data.throughput ?? []
-  const lil = suites.find((row) => row.id === "itslil")
-  const official = suites.find((row) => row.id === "official")
-  const speed = lil && official ? fasterThan(lil.documentMs, official.documentMs) : null
-  const cards = [
-    {
-      label: data.perfLead ?? "same work, against the official runtime graph",
-      value: speed ? speed.text : "—",
-      win: speed?.state === "win",
-    },
-    {
-      label: "LilScript median",
-      value: lil ? ms(lil.documentMs) : "—",
-    },
-    {
-      label: "official median",
-      value: official ? ms(official.documentMs) : "—",
-    },
-    {
-      label: data.spec?.label ?? "tests passing",
-      value: data.spec ? `${data.spec.pass}/${data.spec.total}` : "—",
-      geo: true,
-    },
-  ]
-  document.querySelector("#perf-cards").innerHTML = cards
-    .map(
-      (card) =>
-        `<article class="perf-card${card.win ? " win" : ""}${card.geo ? " geo" : ""}"><strong>${card.value}</strong><span>${card.label}</span></article>`,
-    )
-    .join("")
-  document.querySelector("#perf-body").innerHTML = suites
-    .map((row) => {
-      const verdict = official ? fasterThan(row.documentMs, official.documentMs) : null
-      return `<tr><th scope="row">${row.name}</th><td>${ms(row.documentMs)}</td><td class="verdict ${verdict ? verdict.state : ""}"><strong>${verdict ? verdict.text : "—"}</strong></td></tr>`
-    })
-    .join("")
-  const workload = data.throughputDocument ? ` Document: ${data.throughputDocument}.` : ""
-  document.querySelector("#perf-note").textContent =
-    `${data.runtime ?? "Node"}. ${data.codec}. Median after discarding the first ${data.warmupDiscard ?? 3} samples.${workload}`
-}
+function renderPerf() {}
 
 function median(values) {
   const sorted = [...values].filter(Number.isFinite).sort((left, right) => left - right)
@@ -168,58 +103,7 @@ function escapeHtml(value) {
   })[character])
 }
 
-function renderCompiler() {
-  const compiler = data.compiler
-  const cards = document.querySelector("#compiler-cards")
-  if (!compiler || !cards) return
-  const shipped = laneById("itslil")
-  const bar = data.size.find((lane) => lane.baseline)
-  const change = shipped && bar ? smallerThan(shipped.brotli11, bar.brotli11) : null
-  const compileSamples = compiler.compileWallMs ?? []
-  const buildSamples = compiler.buildCompileWallMs ?? []
-  const invocations = compiler.invocations?.length ?? 0
-  cards.innerHTML = [
-    {
-      value: seconds(median(compileSamples)),
-      label: `compile wall time, shipped ESM · median of ${compileSamples.length}`,
-      win: true,
-    },
-    {
-      value: seconds(median(buildSamples)),
-      label: `all ${invocations} compiles of a clean build · median of ${buildSamples.length}`,
-    },
-    {
-      value: change ? change.text : "—",
-      win: change?.state === "win",
-      label: bar && shipped
-        ? `Brotli vs the bar (${escapeHtml(bar.name)}) · ${formatter.format(bar.brotli11)} → ${formatter.format(shipped.brotli11)} B`
-        : "Brotli vs the bar",
-    },
-    {
-      value: escapeHtml(compiler.revision),
-      label: "compiler source revision",
-      geo: true,
-    },
-  ]
-    .map(
-      (card) =>
-        `<article class="perf-card${card.win ? " win" : ""}${card.geo ? " geo" : ""}"><strong>${card.value}</strong><span>${card.label}</span></article>`,
-    )
-    .join("")
-  document.querySelector("#delivered-body").innerHTML = (data.delivered ?? [])
-    .map((file) => {
-      const verdict = bar ? smallerThan(file.brotli11, bar.brotli11) : null
-      const writer = file.wrapper && file.wrapper !== "none" ? `${file.writtenBy} + ${file.wrapper}` : file.writtenBy
-      return `<tr><th scope="row"><code>${escapeHtml(file.path)}</code></th><td>${escapeHtml(file.condition)}</td><td>${escapeHtml(writer)}</td><td>${formatter.format(file.raw)}</td><td>${formatter.format(file.gzip9)}</td><td>${formatter.format(file.brotli11)}</td><td class="verdict ${verdict ? verdict.state : ""}"><strong>${verdict ? verdict.text : "—"}</strong></td></tr>`
-    })
-    .join("")
-  const samples = compileSamples.map((value) => `${value} ms`).join(" / ")
-  const host = compiler.host
-    ? ` Host: ${compiler.host}${compiler.loadAverage ? `, 1-minute load average ${compiler.loadAverage.start[0]} before and ${compiler.loadAverage.end[0]} after the builds` : ""}.`
-    : ""
-  document.querySelector("#compiler-note").textContent =
-    `Compiler ${compiler.revision}, binary SHA-256 ${compiler.binarySha256}, codec SHA-256 ${compiler.codecSha256}, recorded ${compiler.date}. Shipped-ESM compile samples: ${samples}.${host}`
-}
+function renderCompiler() {}
 
 function renderBarsNote() {
   const node = document.querySelector("#bars-note")
@@ -483,3 +367,9 @@ renderBarsNote()
 bindCopy()
 bindProgress()
 bindPlayground()
+
+// Each transport codec has its own strongest original reference.
+function originalBar(metric) {
+  return data.size.filter(row => row.id.startsWith("official-") && !row.diagnostic)
+    .reduce((best, row) => !best || row[metric] < best[metric] ? row : best, null)
+}

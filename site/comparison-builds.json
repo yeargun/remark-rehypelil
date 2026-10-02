@@ -1,0 +1,252 @@
+{
+  "compiler": {
+    "baseRevision": "f7d29bd9",
+    "binarySha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+    "hasLocalSourceChanges": true
+  },
+  "machine": {
+    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "logicalCpus": 8,
+    "memoryGiB": 15.6,
+    "os": "Linux-7.0.0-1014-azure-x86_64-with-glibc2.39",
+    "node": "v20.19.0"
+  },
+  "lilscript": [
+    {
+      "library": "remark-rehypelil",
+      "objective": "raw",
+      "command": [
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/bin/lilscript",
+        "--config",
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/configs/remark-rehypelil-raw.toml",
+        "--target",
+        "js-module",
+        "--mode",
+        "production",
+        "--jobs",
+        "1",
+        "--out-dir",
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/artifacts/remark-rehypelil/raw",
+        "--explain",
+        "json",
+        "--cache",
+        "off",
+        "--logical-work",
+        "2000000000"
+      ],
+      "wallSeconds": 15.993495276998146,
+      "returncode": 0,
+      "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+      "configSha256": "4a3d19400479c3812e1a6a2597547010d4ccfcdedc134c857f88807f6799505f",
+      "measuredAt": "2026-10-02T22:40:17.301649+00:00",
+      "outputSha256": "3db3d24b7fc1265ea4dd72fb6d076f381044cb662a4df8e35ba43d18fa571180",
+      "raw": 13518
+    },
+    {
+      "library": "remark-rehypelil",
+      "objective": "gzip",
+      "command": [
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/bin/lilscript",
+        "--config",
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/configs/remark-rehypelil-gzip.toml",
+        "--target",
+        "js-module",
+        "--mode",
+        "production",
+        "--jobs",
+        "1",
+        "--out-dir",
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/artifacts/remark-rehypelil/gzip",
+        "--explain",
+        "json",
+        "--cache",
+        "off",
+        "--logical-work",
+        "2000000000"
+      ],
+      "wallSeconds": 13.288452528999187,
+      "returncode": 0,
+      "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+      "configSha256": "2bf88546aaf70e6cd85a12345f300754706ce503bb4bb4ba60bcb3f9d228963f",
+      "measuredAt": "2026-10-02T22:40:30.595932+00:00",
+      "outputSha256": "668346a78d021548133a4ee6e5b13604641db15d4e5dddd02b5863a64d4f99c1",
+      "raw": 14562
+    },
+    {
+      "library": "remark-rehypelil",
+      "objective": "brotli",
+      "command": [
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/bin/lilscript",
+        "--config",
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/configs/remark-rehypelil-brotli.toml",
+        "--target",
+        "js-module",
+        "--mode",
+        "production",
+        "--jobs",
+        "1",
+        "--out-dir",
+        "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/artifacts/remark-rehypelil/brotli",
+        "--explain",
+        "json",
+        "--cache",
+        "off",
+        "--logical-work",
+        "2000000000"
+      ],
+      "wallSeconds": 31.42295664899939,
+      "returncode": 0,
+      "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+      "configSha256": "a39378af3b05463b8eee838d4d9726da700c0d9cb30faa53251a926d1da5cbba",
+      "measuredAt": "2026-10-02T22:41:02.023950+00:00",
+      "outputSha256": "4ce23d7ea5e1809e67c2e17d33c50ffec9722269f1b82e29398fc403b383a12e",
+      "raw": 14457
+    }
+  ],
+  "upstream": {
+    "name": "remark-rehypelil",
+    "package": "remark-rehype",
+    "version": "11.1.2",
+    "resolveDir": "/home/azureuser/react-markdownlil",
+    "output": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream/remark-rehypelil",
+    "entry": "export {default,defaultFootnoteBackContent,defaultFootnoteBackLabel,defaultHandlers} from \"remark-rehype\";",
+    "external": [],
+    "sharedExports": [
+      "default",
+      "defaultFootnoteBackContent",
+      "defaultFootnoteBackLabel",
+      "defaultHandlers"
+    ],
+    "excludedExports": [],
+    "additionalExports": [],
+    "resolution": {
+      "platform": "neutral",
+      "conditions": [
+        "production"
+      ],
+      "mainFields": [
+        "module",
+        "main"
+      ],
+      "target": "es2020",
+      "defines": {
+        "process.env.NODE_ENV": "production"
+      }
+    },
+    "minifiers": [
+      {
+        "tool": "Terser",
+        "version": "5.51.2",
+        "esbuild": "0.28.1",
+        "artifact": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream/remark-rehypelil/terser.mjs",
+        "sha256": "52b03b35b329700b69a2a91c658651d57bbae4b7f72ca1edd9a37c2f01270956",
+        "raw": 16855,
+        "imports": [],
+        "wallSeconds": 0.4058742069999998,
+        "command": [
+          "/home/azureuser/.nvm/versions/node/v20.19.0/bin/node",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream.mjs",
+          "child",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream/remark-rehypelil/job.json",
+          "Terser"
+        ]
+      },
+      {
+        "tool": "esbuild",
+        "version": "0.28.1",
+        "esbuild": "0.28.1",
+        "artifact": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream/remark-rehypelil/esbuild.mjs",
+        "sha256": "08c3efa53112316c0a62d131091e299b7a677db2d4a06ad1038cc8250cd97161",
+        "raw": 17438,
+        "imports": [],
+        "wallSeconds": 0.06651294700000017,
+        "command": [
+          "/home/azureuser/.nvm/versions/node/v20.19.0/bin/node",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream.mjs",
+          "child",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream/remark-rehypelil/job.json",
+          "esbuild"
+        ]
+      },
+      {
+        "tool": "Oxc",
+        "version": "via Vite 8.2.1",
+        "esbuild": "0.28.1",
+        "artifact": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream/remark-rehypelil/oxc.mjs",
+        "sha256": "cf92cf4fc99f4142630c4004254d3e89446e2198abdc62cb3830f9e7844c2ab3",
+        "raw": 16875,
+        "imports": [],
+        "wallSeconds": 0.18583998400000018,
+        "command": [
+          "/home/azureuser/.nvm/versions/node/v20.19.0/bin/node",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream.mjs",
+          "child",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-pages/upstream/remark-rehypelil/job.json",
+          "Oxc"
+        ]
+      }
+    ]
+  },
+  "sourceInputs": {
+    "root": 0,
+    "entries": [
+      {
+        "name": "index",
+        "module": 0
+      }
+    ],
+    "modules": [
+      {
+        "path": "/home/azureuser/remark-rehypelil/src/entry.lil",
+        "bytes": 2092,
+        "sha256": "1013bd8ff1f5f84a97ac7065b79a758db4e69191a80ed573fdf2386b06e4bdeb",
+        "dependencies": [
+          1,
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/remark-rehypelil/src/hast/convert.lil",
+        "bytes": 31133,
+        "sha256": "0a1b84c293a46c7203021074a62f6dce5478ca08b0434d86d68c45f334f76cde",
+        "dependencies": [
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/remark-rehypelil/src/hast/types.lil",
+        "bytes": 10261,
+        "sha256": "8cedef100ce0b759088a08c4ecf6c9e63dde6ee699cac217fd585ac1add5ff7d",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      }
+    ],
+    "host_modules": [],
+    "host_reserved": []
+  },
+  "validation": {
+    "checks": 30,
+    "objectives": [
+      {
+        "objective": "raw",
+        "checks": 10,
+        "suite": "upstream-derived/API"
+      },
+      {
+        "objective": "gzip",
+        "checks": 10,
+        "suite": "upstream-derived/API"
+      },
+      {
+        "objective": "brotli",
+        "checks": 10,
+        "suite": "upstream-derived/API"
+      }
+    ],
+    "scope": "Main ESM entry; selected corpora and API checks, not all package formats or complete upstream equivalence."
+  },
+  "workLimit": 2000000000,
+  "timingScope": "One sequential fresh-output build per objective/minifier. Upstream timing is ESM bundling and minification, not original-repository source compilation."
+}
