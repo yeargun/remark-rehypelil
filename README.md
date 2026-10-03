@@ -15,10 +15,12 @@ The runtime is bundled, so `src/entry.lil` and `src/hast/` group the upstream pl
 | Lane | Config | Meaning |
 | --- | --- | --- |
 | **library** (npm) | `lilscript.toml` · `--target js-module` | reusable ESM. Export names and `extern class` keys stay. |
-| **closed** | `lilscript.closed.toml` · `--target js-module` | the same program at a lower effort level (12, no candidate search). This compiler renames no properties, so it no longer differs from the library lane in what it mangles. |
+| **closed** | `lilscript.closed.toml` · `--target js-module` | the same program at a lower effort level (12, no candidate search). Declared public and extern field names are preserved. |
 
 You publish the library lane. `dist/remark-rehype.closed.js` is diagnostic only.
 
 ## Comparison with the original
 
 See [COMPARISON.md](COMPARISON.md) for current raw-, gzip- and Brotli-objective builds, minified upstream comparisons, build times and validation.
+
+[Download the checked repository package](https://yeargun.github.io/remark-rehypelil/downloads/package.tgz) · [Package files, hashes and validation](https://yeargun.github.io/remark-rehypelil/package-build.json). npm publication is independent.

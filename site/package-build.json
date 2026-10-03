@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "package": "@itslil/remark-rehype",
+  "version": "11.1.6",
+  "checkedAt": "2026-10-03T15:05:12.194357+00:00",
+  "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+  "buildReport": "./comparison/package-build-report.json",
+  "packageBuildSeconds": 37.854,
+  "validation": {
+    "ok": true,
+    "checks": [
+      {
+        "suite": "test",
+        "command": [
+          "bash",
+          "-c",
+          "npm run test:types && node --test-concurrency=1 --test test/*.test.mjs test/official/test.js"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/test.log",
+        "logSha256": "4e140fd801a9295b13e84e327fd95a5e95f0f97194fc40a2f6ed46352b3755b9"
+      },
+      {
+        "suite": "pack",
+        "command": [
+          "npm",
+          "run",
+          "check:pack"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/pack.log",
+        "logSha256": "7f00303abd69ee3ff310250078d9b6f2b16c1a80647da3a4ccaa2933c16587e1"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/browser.lil",
+      "sha256": "29215bc9ba5f6a47a3ab1a01761920857d4b7f0c0dd6cc28af705cdcdd7a74c7"
+    },
+    {
+      "path": "src/entry.lil",
+      "sha256": "1013bd8ff1f5f84a97ac7065b79a758db4e69191a80ed573fdf2386b06e4bdeb"
+    },
+    {
+      "path": "src/hast/convert.lil",
+      "sha256": "408d807a8668b4c46e2502c52ccecdf345d373249c44d5a831e55f0efbc2a357"
+    },
+    {
+      "path": "src/hast/entry.lil",
+      "sha256": "e3498410b6bea1055d749396993452d7f09c5af84862aa7e8fe3de43f1e56565"
+    },
+    {
+      "path": "src/hast/structured-clone.lil",
+      "sha256": "a5dfbee9c82ac59ccbda7fafd55217d0dd90cbf0d3d13a9818e3a211fec8a259"
+    },
+    {
+      "path": "src/hast/types.lil",
+      "sha256": "6323ae0c126df16614bf8a6473e3256058a0485abc22879fe2a0f6554c717aea"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/.lilscript/closed.json",
+      "bytes": 3466,
+      "sha256": "5d579f78f70a2cbab9519a30c2cc3377fb74fa6ad98e57f02a34b2aabc6c542e"
+    },
+    {
+      "path": "dist/.lilscript/public.json",
+      "bytes": 7381,
+      "sha256": "c77aa3083bfe0d88a62e28b0ebaecb4d5adb434f40bc9df7a58cc85519d2311a"
+    },
+    {
+      "path": "dist/lilscript.manifest.json",
+      "bytes": 7341,
+      "sha256": "8b5b39506dd30939ecda385615227bd1ff6a6653132e44a5ba89d1f46144d79c"
+    },
+    {
+      "path": "dist/remark-rehype.cjs",
+      "bytes": 18975,
+      "sha256": "0c50d9b208186cd9b39d0b6543730a659226e0a14829b72978368b76a4efe53a"
+    },
+    {
+      "path": "dist/remark-rehype.closed.js",
+      "bytes": 18567,
+      "sha256": "891643995e65739e6409f9dea28397fe8ed01b5fd87f0552e098b6f4b90676bd"
+    },
+    {
+      "path": "dist/remark-rehype.d.ts",
+      "bytes": 5341,
+      "sha256": "448efd6d40f9b20a2c2bedd98fc180e5b5076bec45afe6418b10bb6f6bfa902b"
+    },
+    {
+      "path": "dist/remark-rehype.esm.js",
+      "bytes": 18567,
+      "sha256": "891643995e65739e6409f9dea28397fe8ed01b5fd87f0552e098b6f4b90676bd"
+    },
+    {
+      "path": "dist/remark-rehype.raw.js",
+      "bytes": 18567,
+      "sha256": "891643995e65739e6409f9dea28397fe8ed01b5fd87f0552e098b6f4b90676bd"
+    },
+    {
+      "path": "dist/remark-rehype.umd.js",
+      "bytes": 18429,
+      "sha256": "5fe93b301ce1e15ed11a06eb1aeb718ae37d2e07be9363f1108256371d126fb9"
+    }
+  ],
+  "scope": "Checked repository package; independent of npm publication. Main-entry objective comparisons have separate artifacts and timings."
+}

@@ -1,0 +1,341 @@
+{
+  "version": 5,
+  "source_sha256": "36853e2c784ca0f774e357731a585b8eecbe9270eb7315da61646000c1807171",
+  "inputs": {
+    "root": 0,
+    "entries": [
+      {
+        "name": "browser",
+        "module": 0
+      },
+      {
+        "name": "index",
+        "module": 1
+      }
+    ],
+    "modules": [
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/browser.lil",
+        "bytes": 77,
+        "sha256": "29215bc9ba5f6a47a3ab1a01761920857d4b7f0c0dd6cc28af705cdcdd7a74c7",
+        "dependencies": [
+          1
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/entry.lil",
+        "bytes": 2092,
+        "sha256": "1013bd8ff1f5f84a97ac7065b79a758db4e69191a80ed573fdf2386b06e4bdeb",
+        "dependencies": [
+          2,
+          3
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/hast/convert.lil",
+        "bytes": 31356,
+        "sha256": "408d807a8668b4c46e2502c52ccecdf345d373249c44d5a831e55f0efbc2a357",
+        "dependencies": [
+          3
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/hast/types.lil",
+        "bytes": 10183,
+        "sha256": "6323ae0c126df16614bf8a6473e3256058a0485abc22879fe2a0f6554c717aea",
+        "dependencies": [
+          4
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/hast/structured-clone.lil",
+        "bytes": 11201,
+        "sha256": "a5dfbee9c82ac59ccbda7fafd55217d0dd90cbf0d3d13a9818e3a211fec8a259",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      }
+    ],
+    "host_modules": [],
+    "host_reserved": []
+  },
+  "outputs": [
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "remark-rehype.esm.js",
+          "dynamic": false,
+          "closure": [
+            "remark-rehype.esm.js"
+          ],
+          "row": 5521,
+          "raw_row": 18567
+        }
+      ],
+      "files": [
+        {
+          "file": "remark-rehype.esm.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "browser.lil",
+            "entry.lil",
+            "hast/convert.lil",
+            "hast/types.lil",
+            "hast/structured-clone.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 18567,
+          "codec_bytes": 5521,
+          "sha256": "891643995e65739e6409f9dea28397fe8ed01b5fd87f0552e098b6f4b90676bd"
+        }
+      ],
+      "side_effects": [
+        "remark-rehype.esm.js"
+      ],
+      "codec_total": 5521,
+      "rows_total": 5521,
+      "setters": 0,
+      "output": "primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        248,
+        99,
+        92,
+        106,
+        254,
+        82,
+        60,
+        202,
+        103,
+        149,
+        169,
+        149,
+        93,
+        209,
+        209,
+        224,
+        50,
+        119,
+        181,
+        163,
+        72,
+        14,
+        179,
+        29,
+        163,
+        64,
+        83,
+        178,
+        48,
+        202,
+        28,
+        82
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "iife",
+      "entries": [
+        {
+          "name": "browser",
+          "file": "remark-rehype.umd.js",
+          "dynamic": false,
+          "closure": [
+            "remark-rehype.umd.js"
+          ],
+          "row": 5570,
+          "raw_row": 18429
+        }
+      ],
+      "files": [
+        {
+          "file": "remark-rehype.umd.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "browser"
+          ],
+          "modules": [
+            "entry.lil",
+            "hast/convert.lil",
+            "hast/types.lil",
+            "hast/structured-clone.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 18429,
+          "codec_bytes": 5570,
+          "sha256": "5fe93b301ce1e15ed11a06eb1aeb718ae37d2e07be9363f1108256371d126fb9"
+        }
+      ],
+      "side_effects": [
+        "remark-rehype.umd.js"
+      ],
+      "codec_total": 5570,
+      "rows_total": 5570,
+      "setters": 0,
+      "output": "browser",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        222,
+        238,
+        123,
+        246,
+        73,
+        252,
+        238,
+        45,
+        14,
+        114,
+        39,
+        170,
+        52,
+        79,
+        55,
+        23,
+        115,
+        77,
+        240,
+        185,
+        185,
+        235,
+        228,
+        138,
+        159,
+        174,
+        162,
+        215,
+        8,
+        230,
+        178,
+        62
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "cjs",
+      "entries": [
+        {
+          "name": "index",
+          "file": "remark-rehype.cjs",
+          "dynamic": false,
+          "closure": [
+            "remark-rehype.cjs"
+          ],
+          "row": 5589,
+          "raw_row": 18975
+        }
+      ],
+      "files": [
+        {
+          "file": "remark-rehype.cjs",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "entry.lil",
+            "hast/convert.lil",
+            "hast/types.lil",
+            "hast/structured-clone.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 18975,
+          "codec_bytes": 5589,
+          "sha256": "0c50d9b208186cd9b39d0b6543730a659226e0a14829b72978368b76a4efe53a"
+        }
+      ],
+      "side_effects": [
+        "remark-rehype.cjs"
+      ],
+      "codec_total": 5589,
+      "rows_total": 5589,
+      "setters": 0,
+      "output": "cjs",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        22,
+        21,
+        15,
+        168,
+        75,
+        112,
+        115,
+        170,
+        178,
+        225,
+        68,
+        22,
+        127,
+        39,
+        175,
+        83,
+        173,
+        47,
+        26,
+        229,
+        50,
+        164,
+        208,
+        90,
+        237,
+        219,
+        56,
+        151,
+        173,
+        75,
+        45,
+        249
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "schemaVersion": 4,
   "name": "remark-rehypelil",
   "package": "@itslil/remark-rehype",
-  "measuredAt": "2026-10-03T02:05:48.572819+03:00",
+  "measuredAt": "2026-10-03T18:02:15.421111+03:00",
   "compiler": {
     "baseRevision": "f7d29bd9",
     "binarySha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
@@ -13,10 +13,10 @@
     "version": "11.1.2",
     "external": [],
     "sharedExports": [
-      "default",
       "defaultFootnoteBackContent",
       "defaultFootnoteBackLabel",
-      "defaultHandlers"
+      "defaultHandlers",
+      "default"
     ],
     "excludedExports": [],
     "additionalExports": [],
@@ -32,10 +32,11 @@
       "target": "es2020",
       "defines": {
         "process.env.NODE_ENV": "production"
-      }
+      },
+      "css": "excluded; measured JavaScript only"
     }
   },
-  "scope": "Portable main-entry ESM with matching shared named exports and external imports. The original uses production/default package conditions, keeping data-based entity decoding rather than relying on the DOM.",
+  "scope": "Portable main-entry ESM with matching shared named exports and external imports. The original uses production/default package conditions. Package Node, browser and development variants are tested separately.",
   "machine": {
     "cpu": "AMD EPYC 7763 64-Core Processor",
     "logicalCpus": 8,
@@ -50,28 +51,28 @@
       "lilscript": {
         "artifact": "./comparison-artifacts/lilscript-raw.mjs",
         "sizes": {
-          "raw": 13518,
-          "gzip9": 5153,
-          "brotli11": 4591
+          "raw": 17535,
+          "gzip9": 6400,
+          "brotli11": 5698
         },
-        "sha256": "3db3d24b7fc1265ea4dd72fb6d076f381044cb662a4df8e35ba43d18fa571180",
-        "buildSeconds": 15.993495276998146,
+        "sha256": "2b1647c4a50f059d2d4a7a8117f5bbc8bb4ab713f8eb391f1168de1141e04efb",
+        "buildSeconds": 61.75568968500011,
         "config": "./comparison-artifacts/lilscript-raw.toml",
-        "configSha256": "4a3d19400479c3812e1a6a2597547010d4ccfcdedc134c857f88807f6799505f"
+        "configSha256": "770c24dc7c127899867b415888a4f1907ac3845ccc9848d12dabba0767ac22d5"
       },
       "original": {
         "tool": "Terser",
         "version": "5.51.2",
         "artifact": "./comparison-artifacts/original-terser.mjs",
         "sizes": {
-          "raw": 16855,
-          "gzip9": 5443,
-          "brotli11": 4908
+          "raw": 17050,
+          "gzip9": 5527,
+          "brotli11": 4998
         },
-        "sha256": "52b03b35b329700b69a2a91c658651d57bbae4b7f72ca1edd9a37c2f01270956",
-        "buildSeconds": 0.4058742069999998
+        "sha256": "be2f6d0ca22ad6695df2a063886acc381189c80e0baee523432564d318913429",
+        "buildSeconds": 0.5031989619999995
       },
-      "ratio": 0.8020172055769801
+      "ratio": 1.0284457478005866
     },
     {
       "objective": "gzip",
@@ -79,28 +80,28 @@
       "lilscript": {
         "artifact": "./comparison-artifacts/lilscript-gzip.mjs",
         "sizes": {
-          "raw": 14562,
-          "gzip9": 4950,
-          "brotli11": 4459
+          "raw": 18097,
+          "gzip9": 5998,
+          "brotli11": 5422
         },
-        "sha256": "668346a78d021548133a4ee6e5b13604641db15d4e5dddd02b5863a64d4f99c1",
-        "buildSeconds": 13.288452528999187,
+        "sha256": "4becf2033165898e70f891042791e455b4cd0b40513b1716823ec56c7a7bcb85",
+        "buildSeconds": 58.28447953599971,
         "config": "./comparison-artifacts/lilscript-gzip.toml",
-        "configSha256": "2bf88546aaf70e6cd85a12345f300754706ce503bb4bb4ba60bcb3f9d228963f"
+        "configSha256": "e8cfd7448612c466a0dd5c468998e00771d444789d4e385fa0b05aa81d4e735c"
       },
       "original": {
         "tool": "Terser",
         "version": "5.51.2",
         "artifact": "./comparison-artifacts/original-terser.mjs",
         "sizes": {
-          "raw": 16855,
-          "gzip9": 5443,
-          "brotli11": 4908
+          "raw": 17050,
+          "gzip9": 5527,
+          "brotli11": 4998
         },
-        "sha256": "52b03b35b329700b69a2a91c658651d57bbae4b7f72ca1edd9a37c2f01270956",
-        "buildSeconds": 0.4058742069999998
+        "sha256": "be2f6d0ca22ad6695df2a063886acc381189c80e0baee523432564d318913429",
+        "buildSeconds": 0.5031989619999995
       },
-      "ratio": 0.9094249494763917
+      "ratio": 1.0852180206260178
     },
     {
       "objective": "brotli",
@@ -108,28 +109,28 @@
       "lilscript": {
         "artifact": "./comparison-artifacts/lilscript-brotli.mjs",
         "sizes": {
-          "raw": 14457,
-          "gzip9": 4997,
-          "brotli11": 4438
+          "raw": 18128,
+          "gzip9": 6117,
+          "brotli11": 5446
         },
-        "sha256": "4ce23d7ea5e1809e67c2e17d33c50ffec9722269f1b82e29398fc403b383a12e",
-        "buildSeconds": 31.42295664899939,
+        "sha256": "05209ca77b188f368f11a9d0569a26542289ef1018e72d5c1951f93e2cc7cfb4",
+        "buildSeconds": 142.94674983799632,
         "config": "./comparison-artifacts/lilscript-brotli.toml",
-        "configSha256": "a39378af3b05463b8eee838d4d9726da700c0d9cb30faa53251a926d1da5cbba"
+        "configSha256": "692ed0ea3772486d08275818525e90e7ce1deb765d091a25d4fb1a69efcdea7b"
       },
       "original": {
         "tool": "Terser",
         "version": "5.51.2",
         "artifact": "./comparison-artifacts/original-terser.mjs",
         "sizes": {
-          "raw": 16855,
-          "gzip9": 5443,
-          "brotli11": 4908
+          "raw": 17050,
+          "gzip9": 5527,
+          "brotli11": 4998
         },
-        "sha256": "52b03b35b329700b69a2a91c658651d57bbae4b7f72ca1edd9a37c2f01270956",
-        "buildSeconds": 0.4058742069999998
+        "sha256": "be2f6d0ca22ad6695df2a063886acc381189c80e0baee523432564d318913429",
+        "buildSeconds": 0.5031989619999995
       },
-      "ratio": 0.9042379788101059
+      "ratio": 1.0896358543417366
     }
   ],
   "minifiers": [
@@ -138,57 +139,138 @@
       "version": "5.51.2",
       "artifact": "./comparison-artifacts/original-terser.mjs",
       "sizes": {
-        "raw": 16855,
-        "gzip9": 5443,
-        "brotli11": 4908
+        "raw": 17050,
+        "gzip9": 5527,
+        "brotli11": 4998
       },
-      "sha256": "52b03b35b329700b69a2a91c658651d57bbae4b7f72ca1edd9a37c2f01270956",
-      "buildSeconds": 0.4058742069999998
+      "sha256": "be2f6d0ca22ad6695df2a063886acc381189c80e0baee523432564d318913429",
+      "buildSeconds": 0.5031989619999995
     },
     {
       "tool": "esbuild",
       "version": "0.28.1",
       "artifact": "./comparison-artifacts/original-esbuild.mjs",
       "sizes": {
-        "raw": 17438,
-        "gzip9": 5824,
-        "brotli11": 5287
+        "raw": 17638,
+        "gzip9": 5921,
+        "brotli11": 5386
       },
-      "sha256": "08c3efa53112316c0a62d131091e299b7a677db2d4a06ad1038cc8250cd97161",
-      "buildSeconds": 0.06651294700000017
+      "sha256": "3f7ad21a0564c1675cb9e29b7479e3dd8d4d08f8cbdf40001d4dd00c99561988",
+      "buildSeconds": 0.06902252599999974
     },
     {
       "tool": "Oxc",
       "version": "via Vite 8.2.1",
       "artifact": "./comparison-artifacts/original-oxc.mjs",
       "sizes": {
-        "raw": 16875,
-        "gzip9": 5563,
-        "brotli11": 5056
+        "raw": 17073,
+        "gzip9": 5658,
+        "brotli11": 5149
       },
-      "sha256": "cf92cf4fc99f4142630c4004254d3e89446e2198abdc62cb3830f9e7844c2ab3",
-      "buildSeconds": 0.18583998400000018
+      "sha256": "ddab76270cce2546a64d383a99c93166b1fecb6721c2936f42b8566351349790",
+      "buildSeconds": 0.18512886100000014
     }
   ],
   "validation": {
     "checks": 30,
-    "objectives": [
+    "runs": [
       {
         "objective": "raw",
+        "suite": "official",
         "checks": 10,
-        "suite": "upstream-derived/API"
+        "command": [
+          "node",
+          "--no-warnings",
+          "--experimental-loader",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/redirect-loader.mjs",
+          "--test-concurrency=1",
+          "--test",
+          "test/official/test.js"
+        ],
+        "artifact": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/validation/raw/remark-rehypelil/dist/index.mjs",
+        "ok": true
       },
       {
         "objective": "gzip",
+        "suite": "official",
         "checks": 10,
-        "suite": "upstream-derived/API"
+        "command": [
+          "node",
+          "--no-warnings",
+          "--experimental-loader",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/redirect-loader.mjs",
+          "--test-concurrency=1",
+          "--test",
+          "test/official/test.js"
+        ],
+        "artifact": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/validation/gzip/remark-rehypelil/dist/index.mjs",
+        "ok": true
       },
       {
         "objective": "brotli",
+        "suite": "official",
         "checks": 10,
-        "suite": "upstream-derived/API"
+        "command": [
+          "node",
+          "--no-warnings",
+          "--experimental-loader",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/redirect-loader.mjs",
+          "--test-concurrency=1",
+          "--test",
+          "test/official/test.js"
+        ],
+        "artifact": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/validation/brotli/remark-rehypelil/dist/index.mjs",
+        "ok": true
       }
     ],
-    "scope": "Main ESM entry; selected corpora and API checks, not all package formats or complete upstream equivalence."
+    "ok": true,
+    "scope": "Current independent main-entry builds; package-format tests are recorded separately."
+  },
+  "originalValidation": {
+    "checks": 30,
+    "runs": [
+      {
+        "minifier": "terser",
+        "checks": 10,
+        "ok": true,
+        "command": [
+          "node",
+          "--no-warnings",
+          "--experimental-loader",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/redirect-loader.mjs",
+          "--test-concurrency=1",
+          "--test",
+          "test/official/test.js"
+        ]
+      },
+      {
+        "minifier": "esbuild",
+        "checks": 10,
+        "ok": true,
+        "command": [
+          "node",
+          "--no-warnings",
+          "--experimental-loader",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/redirect-loader.mjs",
+          "--test-concurrency=1",
+          "--test",
+          "test/official/test.js"
+        ]
+      },
+      {
+        "minifier": "oxc",
+        "checks": 10,
+        "ok": true,
+        "command": [
+          "node",
+          "--no-warnings",
+          "--experimental-loader",
+          "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/redirect-loader.mjs",
+          "--test-concurrency=1",
+          "--test",
+          "test/official/test.js"
+        ]
+      }
+    ]
   }
 }

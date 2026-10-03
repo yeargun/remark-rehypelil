@@ -1,0 +1,146 @@
+{
+  "version": 3,
+  "codec": "brotli",
+  "outputs": [
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "index",
+          "file": "remark-rehype.closed.js",
+          "dynamic": false,
+          "closure": [
+            "remark-rehype.closed.js"
+          ],
+          "row": 5521,
+          "raw_row": 18567
+        }
+      ],
+      "files": [
+        {
+          "file": "remark-rehype.closed.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "entry.lil",
+            "hast/convert.lil",
+            "hast/types.lil",
+            "hast/structured-clone.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 18567,
+          "codec_bytes": 5521,
+          "sha256": "891643995e65739e6409f9dea28397fe8ed01b5fd87f0552e098b6f4b90676bd"
+        }
+      ],
+      "side_effects": [
+        "remark-rehype.closed.js"
+      ],
+      "codec_total": 5521,
+      "rows_total": 5521,
+      "setters": 0,
+      "output": "primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        223,
+        36,
+        211,
+        219,
+        148,
+        212,
+        249,
+        59,
+        85,
+        44,
+        118,
+        140,
+        45,
+        2,
+        203,
+        152,
+        248,
+        218,
+        59,
+        143,
+        149,
+        209,
+        40,
+        98,
+        185,
+        57,
+        101,
+        229,
+        95,
+        76,
+        184,
+        131
+      ]
+    }
+  ],
+  "source_sha256": "a4996ff4bfb283dfe642d86aa284bcabd0cf43bfee3d895e61758e5883b695c3",
+  "inputs": {
+    "root": 0,
+    "entries": [
+      {
+        "name": "index",
+        "module": 0
+      }
+    ],
+    "modules": [
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/entry.lil",
+        "bytes": 2092,
+        "sha256": "1013bd8ff1f5f84a97ac7065b79a758db4e69191a80ed573fdf2386b06e4bdeb",
+        "dependencies": [
+          1,
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/hast/convert.lil",
+        "bytes": 31356,
+        "sha256": "408d807a8668b4c46e2502c52ccecdf345d373249c44d5a831e55f0efbc2a357",
+        "dependencies": [
+          2
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/hast/types.lil",
+        "bytes": 10183,
+        "sha256": "6323ae0c126df16614bf8a6473e3256058a0485abc22879fe2a0f6554c717aea",
+        "dependencies": [
+          3
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-rehypelil/src/hast/structured-clone.lil",
+        "bytes": 11201,
+        "sha256": "a5dfbee9c82ac59ccbda7fafd55217d0dd90cbf0d3d13a9818e3a211fec8a259",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      }
+    ],
+    "host_modules": [],
+    "host_reserved": []
+  }
+}
